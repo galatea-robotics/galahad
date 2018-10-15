@@ -1,0 +1,177 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{C055A544-ADC2-4B60-B58E-CDA890C81762}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Gala.Dolly.Test</RootNamespace>
+    <AssemblyName>Gala.Dolly.Command</AssemblyName>
+    <ApplicationIcon>..\Galatea\Galatea.ico</ApplicationIcon>
+    <StartupObject>Gala.Dolly.Test.Program</StartupObject>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>..\Gala.Dolly\Gala.Dolly.pfx</AssemblyOriginatorKeyFile>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>2.0</OldToolsVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\bin\Test\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
+    <DocumentationFile>
+    </DocumentationFile>
+    <PlatformTarget>x86</PlatformTarget>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup>
+    <NoWin32Manifest>true</NoWin32Manifest>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Test|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>..\bin\Test\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="..\Gala.Dolly\Properties\Gala.Dolly.cs">
+      <Link>Properties\Gala.Dolly.cs</Link>
+    </Compile>
+    <Compile Include="..\Gala.Dolly\Properties\Version.cs">
+      <Link>Properties\Version.cs</Link>
+    </Compile>
+    <Compile Include="ChatbotManager.cs" />
+    <Compile Include="TestDebugger.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="TestModule.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <DependentUpon>Settings.settings</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="TestEngine.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="TestModule_v1343.cs" />
+    <Compile Include="TestModule_v1344.cs" />
+    <Compile Include="TestModule_v1345.cs" />
+    <Compile Include="TestModule_v1346.cs" />
+    <Compile Include="TestModule_v1347.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Drawing" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <None Include="..\Gala.Dolly\Gala.Dolly.pfx">
+      <Link>Gala.Dolly.pfx</Link>
+    </None>
+    <None Include="app.config" />
+    <None Include="Gala.Dolly.Command.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Gala.Data\Gala.Data.csproj">
+      <Project>{fce634b4-5a87-4519-98d4-240b4a42f8d5}</Project>
+      <Name>Gala.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Galatea.AI.Abstract\Galatea.AI.Abstract.csproj">
+      <Project>{25141e11-c310-4d1f-b509-c130811104b0}</Project>
+      <Name>Galatea.AI.Abstract</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Galatea.AI.Imaging\Galatea.AI.Imaging.csproj">
+      <Project>{722c0361-4b8f-415c-954f-54c988efef40}</Project>
+      <Name>Galatea.AI.Imaging</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Galatea.AI.Robotics\Galatea.AI.Robotics.csproj">
+      <Project>{5d8691ab-beca-44a7-865f-41274af20950}</Project>
+      <Name>Galatea.AI.Robotics</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Galatea.AI\Galatea.AI.csproj">
+      <Project>{cd60efdf-b92d-48a2-bc1f-25441c9becf3}</Project>
+      <Name>Galatea.AI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Galatea.Runtime\Galatea.Runtime.csproj">
+      <Project>{b0d0c0a4-d37d-4e5b-a357-758e1afb76ba}</Project>
+      <Name>Galatea.Runtime</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Galatea\Galatea.Core.csproj">
+      <Project>{e36af529-f151-4b39-92f1-115c31bcb746}</Project>
+      <Name>Galatea.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

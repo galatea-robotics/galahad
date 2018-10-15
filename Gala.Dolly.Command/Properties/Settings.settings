@@ -1,0 +1,18 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Gala.Dolly.Test.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="DataAccessManagerConnectionString" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">..\..\..\Data\SerializedData.dat</Value>
+    </Setting>
+    <Setting Name="ChatBotName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">MARIA</Value>
+    </Setting>
+    <Setting Name="DefaultUserName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Peanut</Value>
+    </Setting>
+    <Setting Name="ColorTemplateHybridResultThreshold" Type="System.Int16" Scope="User">
+      <Value Profile="(Default)">25</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
