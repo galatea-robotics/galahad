@@ -56,7 +56,7 @@ namespace Galatea.AI.Language
             foreach (Substitution subst in _substitutions)
             {
                 globalizedResponse = globalizedResponse.Replace(subst.ValueToReplace, subst.ReplaceWithValue);
-                if (subst.ApplyToOriginalResponse) response.Replace(subst.ValueToReplace, subst.ReplaceWithValue);
+                if (subst.ApplyToOriginalResponse) response = response.Replace(subst.ValueToReplace, subst.ReplaceWithValue);
             }
 
             return globalizedResponse;
@@ -121,7 +121,7 @@ namespace Galatea.AI.Language
                 set { _applyToOriginalResponse = value; }
             }
 
-            private string _valueToReplace, _replaceWithValue;
+            private readonly string _valueToReplace, _replaceWithValue;
             private bool _applyToOriginalResponse;
         }
 
