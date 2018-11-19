@@ -70,29 +70,32 @@ namespace Gala.Dolly.Test.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("\r\n                    <ImagingSettings xmlns:xsi=\"http://www.w3.org/2001/XMLSchem" +
-            "a-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">\r\n                     " +
-            "   <Timeout>0</Timeout>\r\n                        <SuppressTimeout>false</Suppres" +
-            "sTimeout>\r\n                        <ColorStatsSettings>\r\n                       " +
-            "     <StatisticalAnalysisTypes>Mean</StatisticalAnalysisTypes>\r\n                " +
-            "        </ColorStatsSettings>\r\n                        <MonochromeBlobFilterSett" +
-            "ings>\r\n                            <ContrastCorrectionFactor>0.25</ContrastCorre" +
-            "ctionFactor>\r\n                            <AdaptiveSmoothingFactor>0.25</Adaptiv" +
-            "eSmoothingFactor>\r\n                            <FrameWidth>10</FrameWidth>\r\n    " +
-            "                    </MonochromeBlobFilterSettings>\r\n                        <Bl" +
-            "obPointSettings>\r\n                            <LineSegmentThreshold>18</LineSegm" +
-            "entThreshold>\r\n                            <LineAngleThreshold>9</LineAngleThres" +
-            "hold>\r\n                            <CurveAngleThreshold>27</CurveAngleThreshold>" +
-            "\r\n                        </BlobPointSettings>\r\n                        <ImageRe" +
-            "cognitionSettings>\r\n                            <ColorBrightnessThreshold>5</Col" +
-            "orBrightnessThreshold>\r\n                            <ColorSaturationThreshold>5<" +
-            "/ColorSaturationThreshold>\r\n                            <ShapeOblongThreshold>1." +
-            "75</ShapeOblongThreshold>\r\n                            <ShapeOblongRecognitionLe" +
-            "vel>2</ShapeOblongRecognitionLevel>\r\n                            <ShapeOblongRec" +
-            "ognitionNormalization>true</ShapeOblongRecognitionNormalization>\r\n              " +
-            "              <IdentifyShapeCertaintyMinimum>65</IdentifyShapeCertaintyMinimum>\r" +
-            "\n                        </ImageRecognitionSettings>\r\n                    </Imag" +
-            "ingSettings>\r\n                ")]
+        [global::System.Configuration.DefaultSettingValueAttribute(@"<?xml version=""1.0"" encoding=""utf-16""?>
+<ImagingSettings xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance"" xmlns:xsd=""http://www.w3.org/2001/XMLSchema"">
+  <Timeout>0</Timeout>
+  <SuppressTimeout>false</SuppressTimeout>
+  <ColorStatsSettings>
+    <StatisticalAnalysisTypes>Mean</StatisticalAnalysisTypes>
+  </ColorStatsSettings>
+  <MonochromeBlobFilterSettings>
+    <ContrastCorrectionFactor>0.25</ContrastCorrectionFactor>
+    <AdaptiveSmoothingFactor>0.25</AdaptiveSmoothingFactor>
+    <FrameWidth>10</FrameWidth>
+  </MonochromeBlobFilterSettings>
+  <BlobPointSettings>
+    <LineSegmentThreshold>18</LineSegmentThreshold>
+    <LineAngleThreshold>9</LineAngleThreshold>
+    <CurveAngleThreshold>27</CurveAngleThreshold>
+  </BlobPointSettings>
+  <TemplateRecognitionSettings>
+    <ColorBrightnessThreshold>0</ColorBrightnessThreshold>
+    <ColorSaturationThreshold>0</ColorSaturationThreshold>
+    <ShapeOblongThreshold>0</ShapeOblongThreshold>
+    <ShapeOblongRecognitionLevel>0</ShapeOblongRecognitionLevel>
+    <ShapeOblongRecognitionNormalization>false</ShapeOblongRecognitionNormalization>
+    <IdentifyShapeCertaintyMinimum>0</IdentifyShapeCertaintyMinimum>
+  </TemplateRecognitionSettings>
+</ImagingSettings>")]
         public global::Galatea.AI.Imaging.ImagingSettings ImagingSettings {
             get {
                 return ((global::Galatea.AI.Imaging.ImagingSettings)(this["ImagingSettings"]));
