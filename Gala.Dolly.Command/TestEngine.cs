@@ -29,7 +29,7 @@ namespace Gala.Dolly.Test
             Galatea.AI.Robotics.SensoryMotorSystem machine = new Galatea.AI.Robotics.Machine();
             machine.Initialize(this);
 
-            VisualProcessor vision = new VisualProcessor();
+            VisualProcessor vision = new VisualProcessor(Properties.Settings.Default.ImagingSettings);
             vision.Initialize(this);
 
             // Become Self-Aware

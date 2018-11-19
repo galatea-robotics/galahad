@@ -12,7 +12,7 @@ namespace Gala.Dolly.Test.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "14.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "15.7.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -65,6 +65,40 @@ namespace Gala.Dolly.Test.Properties {
             }
             set {
                 this["ColorTemplateHybridResultThreshold"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("\r\n                    <ImagingSettings xmlns:xsi=\"http://www.w3.org/2001/XMLSchem" +
+            "a-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">\r\n                     " +
+            "   <Timeout>0</Timeout>\r\n                        <SuppressTimeout>false</Suppres" +
+            "sTimeout>\r\n                        <ColorStatsSettings>\r\n                       " +
+            "     <StatisticalAnalysisTypes>Mean</StatisticalAnalysisTypes>\r\n                " +
+            "        </ColorStatsSettings>\r\n                        <MonochromeBlobFilterSett" +
+            "ings>\r\n                            <ContrastCorrectionFactor>0.25</ContrastCorre" +
+            "ctionFactor>\r\n                            <AdaptiveSmoothingFactor>0.25</Adaptiv" +
+            "eSmoothingFactor>\r\n                            <FrameWidth>10</FrameWidth>\r\n    " +
+            "                    </MonochromeBlobFilterSettings>\r\n                        <Bl" +
+            "obPointSettings>\r\n                            <LineSegmentThreshold>18</LineSegm" +
+            "entThreshold>\r\n                            <LineAngleThreshold>9</LineAngleThres" +
+            "hold>\r\n                            <CurveAngleThreshold>27</CurveAngleThreshold>" +
+            "\r\n                        </BlobPointSettings>\r\n                        <ImageRe" +
+            "cognitionSettings>\r\n                            <ColorBrightnessThreshold>5</Col" +
+            "orBrightnessThreshold>\r\n                            <ColorSaturationThreshold>5<" +
+            "/ColorSaturationThreshold>\r\n                            <ShapeOblongThreshold>1." +
+            "75</ShapeOblongThreshold>\r\n                            <ShapeOblongRecognitionLe" +
+            "vel>2</ShapeOblongRecognitionLevel>\r\n                            <ShapeOblongRec" +
+            "ognitionNormalization>true</ShapeOblongRecognitionNormalization>\r\n              " +
+            "              <IdentifyShapeCertaintyMinimum>65</IdentifyShapeCertaintyMinimum>\r" +
+            "\n                        </ImageRecognitionSettings>\r\n                    </Imag" +
+            "ingSettings>\r\n                ")]
+        public global::Galatea.AI.Imaging.ImagingSettings ImagingSettings {
+            get {
+                return ((global::Galatea.AI.Imaging.ImagingSettings)(this["ImagingSettings"]));
+            }
+            set {
+                this["ImagingSettings"] = value;
             }
         }
     }

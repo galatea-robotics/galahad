@@ -32,7 +32,9 @@ namespace Gala.Dolly.Test
             Program.Startup();
 
             // Do Test Code
-            TestModule.TestMethod();
+            Console.Write("Press any key to continue...");
+            Console.ReadKey();
+            //TestModule.TestMethod();
 
             // Shutdown Galatea Robotics Engine
             Program.Shutdown();
@@ -51,6 +53,17 @@ namespace Gala.Dolly.Test
         }
         internal static void Startup()
         {
+            /*
+            if(Properties.Settings.Default.ImagingSettings == null)
+            {
+                Properties.Settings.Default.ImagingSettings = Properties.ImagingSettings.Create();
+                Properties.Settings.Default.Save();
+            }
+             */
+
+            // Suppress Timeout
+            Properties.Settings.Default.ImagingSettings.SuppressTimeout = true;
+
             // Initialize Runtime
             Galatea.Diagnostics.IDebugger debugger = new Gala.Dolly.Test.TestDebugger();
 
@@ -62,9 +75,6 @@ namespace Gala.Dolly.Test
             engine.User = new Galatea.Runtime.Services.User("Test");
 
             engine.Startup();
-
-            // Suppress Timeout
-            Galatea.AI.Imaging.Properties.Settings.Default.SuppressTimeout = true;
 
             //// Silence Speech
             //engine.AI.LanguageModel.SpeechModule.StaySilent = true;
