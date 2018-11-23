@@ -261,11 +261,11 @@ namespace Galatea.AI.Language
             }
             catch (TeaException ex)
             {
-                _languageModel.AI.Engine.Debugger.HandleTeaException(ex);
+                _languageModel.AI.Engine.Debugger.HandleTeaException(ex, _languageModel);
             }
             catch (System.Exception ex)
             {
-                _languageModel.AI.Engine.Debugger.ThrowSystemException(ex);
+                _languageModel.AI.Engine.Debugger.ThrowSystemException(ex, _languageModel);
             }
             if (_languageModel.AI.Engine.Debugger.Exception != null)
             {
