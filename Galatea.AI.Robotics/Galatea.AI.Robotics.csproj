@@ -124,6 +124,10 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Galatea.AI.Abstract\Galatea.AI.Abstract.csproj">
+      <Project>{25141e11-c310-4d1f-b509-c130811104b0}</Project>
+      <Name>Galatea.AI.Abstract</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Galatea.Globalization\Galatea.Globalization.csproj">
       <Project>{acd64769-d795-4230-ac94-59acc5e52de5}</Project>
       <Name>Galatea.Globalization</Name>
