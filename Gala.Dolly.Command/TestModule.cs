@@ -15,7 +15,7 @@ namespace Gala.Dolly.Test
             //TestModule_v1345.TestMethod();
             //TestModule_v1346.TestMethod();
 
-            TestModule_v1347.TestMethod();
+            //TestModule_v1347.TestMethod();
         }
 
         public static bool Evaluate(string path, string input, string expectedResult)

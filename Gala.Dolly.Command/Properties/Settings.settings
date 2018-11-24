@@ -14,33 +14,40 @@
     <Setting Name="ColorTemplateHybridResultThreshold" Type="System.Int16" Scope="User">
       <Value Profile="(Default)">25</Value>
     </Setting>
+    <Setting Name="DebuggerLogLevel" Type="Galatea.Diagnostics.DebuggerLogLevel" Scope="User">
+      <Value Profile="(Default)">Event</Value>
+    </Setting>
+    <Setting Name="DebuggerAlertLevel" Type="Galatea.Diagnostics.DebuggerLogLevel" Scope="User">
+      <Value Profile="(Default)">Message</Value>
+    </Setting>
     <Setting Name="ImagingSettings" Type="Galatea.AI.Imaging.ImagingSettings" Scope="User">
-      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
-&lt;ImagingSettings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
-  &lt;Timeout&gt;0&lt;/Timeout&gt;
-  &lt;SuppressTimeout&gt;false&lt;/SuppressTimeout&gt;
-  &lt;ColorStatsSettings&gt;
-    &lt;StatisticalAnalysisTypes&gt;Mean&lt;/StatisticalAnalysisTypes&gt;
-  &lt;/ColorStatsSettings&gt;
-  &lt;MonochromeBlobFilterSettings&gt;
-    &lt;ContrastCorrectionFactor&gt;0.25&lt;/ContrastCorrectionFactor&gt;
-    &lt;AdaptiveSmoothingFactor&gt;0.25&lt;/AdaptiveSmoothingFactor&gt;
-    &lt;FrameWidth&gt;10&lt;/FrameWidth&gt;
-  &lt;/MonochromeBlobFilterSettings&gt;
-  &lt;BlobPointSettings&gt;
-    &lt;LineSegmentThreshold&gt;18&lt;/LineSegmentThreshold&gt;
-    &lt;LineAngleThreshold&gt;9&lt;/LineAngleThreshold&gt;
-    &lt;CurveAngleThreshold&gt;27&lt;/CurveAngleThreshold&gt;
-  &lt;/BlobPointSettings&gt;
-  &lt;TemplateRecognitionSettings&gt;
-    &lt;ColorBrightnessThreshold&gt;0&lt;/ColorBrightnessThreshold&gt;
-    &lt;ColorSaturationThreshold&gt;0&lt;/ColorSaturationThreshold&gt;
-    &lt;ShapeOblongThreshold&gt;0&lt;/ShapeOblongThreshold&gt;
-    &lt;ShapeOblongRecognitionLevel&gt;0&lt;/ShapeOblongRecognitionLevel&gt;
-    &lt;ShapeOblongRecognitionNormalization&gt;false&lt;/ShapeOblongRecognitionNormalization&gt;
-    &lt;IdentifyShapeCertaintyMinimum&gt;0&lt;/IdentifyShapeCertaintyMinimum&gt;
-  &lt;/TemplateRecognitionSettings&gt;
-&lt;/ImagingSettings&gt;</Value>
+      <Value Profile="(Default)">
+                    &lt;ImagingSettings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+                        &lt;Timeout&gt;0&lt;/Timeout&gt;
+                        &lt;SuppressTimeout&gt;false&lt;/SuppressTimeout&gt;
+                        &lt;ColorStatsSettings&gt;
+                            &lt;StatisticalAnalysisTypes&gt;Mean&lt;/StatisticalAnalysisTypes&gt;
+                        &lt;/ColorStatsSettings&gt;
+                        &lt;MonochromeBlobFilterSettings&gt;
+                            &lt;ContrastCorrectionFactor&gt;0.25&lt;/ContrastCorrectionFactor&gt;
+                            &lt;AdaptiveSmoothingFactor&gt;0.25&lt;/AdaptiveSmoothingFactor&gt;
+                            &lt;FrameWidth&gt;10&lt;/FrameWidth&gt;
+                        &lt;/MonochromeBlobFilterSettings&gt;
+                        &lt;BlobPointSettings&gt;
+                            &lt;LineSegmentThreshold&gt;18&lt;/LineSegmentThreshold&gt;
+                            &lt;LineAngleThreshold&gt;9&lt;/LineAngleThreshold&gt;
+                            &lt;CurveAngleThreshold&gt;27&lt;/CurveAngleThreshold&gt;
+                        &lt;/BlobPointSettings&gt;
+                        &lt;TemplateRecognitionSettings&gt;
+                            &lt;ColorBrightnessThreshold&gt;0&lt;/ColorBrightnessThreshold&gt;
+                            &lt;ColorSaturationThreshold&gt;0&lt;/ColorSaturationThreshold&gt;
+                            &lt;ShapeOblongThreshold&gt;0&lt;/ShapeOblongThreshold&gt;
+                            &lt;ShapeOblongRecognitionLevel&gt;0&lt;/ShapeOblongRecognitionLevel&gt;
+                            &lt;ShapeOblongRecognitionNormalization&gt;false&lt;/ShapeOblongRecognitionNormalization&gt;
+                            &lt;IdentifyShapeCertaintyMinimum&gt;0&lt;/IdentifyShapeCertaintyMinimum&gt;
+                        &lt;/TemplateRecognitionSettings&gt;
+                    &lt;/ImagingSettings&gt;
+                </Value>
     </Setting>
   </Settings>
 </SettingsFile>

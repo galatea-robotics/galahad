@@ -5,6 +5,7 @@ using System;
 
 namespace Gala.Dolly.Test
 {
+    using Galatea.Diagnostics;
     using Galatea.Imaging.IO;
     using Galatea.IO;
     using Galatea.Runtime.Services;
@@ -12,7 +13,7 @@ namespace Gala.Dolly.Test
     internal static class Program
     {
         private static TestEngine engine;
-        private static bool started;
+        //private static bool started;
 
         public static TestEngine TestEngine { get { return engine; } }
 
@@ -44,11 +45,11 @@ namespace Gala.Dolly.Test
         {
             if (e.ExceptionObject is Galatea.TeaException)
             {
-                engine.Debugger.HandleTeaException(e.ExceptionObject as Galatea.TeaException);
+                engine.Debugger.HandleTeaException(e.ExceptionObject as Galatea.TeaException, null);
             }
             else
             {
-                engine.Debugger.ThrowSystemException((Exception)e.ExceptionObject);
+                engine.Debugger.ThrowSystemException((Exception)e.ExceptionObject, null);
             }
         }
         internal static void Startup()
@@ -65,7 +66,8 @@ namespace Gala.Dolly.Test
             Properties.Settings.Default.ImagingSettings.SuppressTimeout = true;
 
             // Initialize Runtime
-            Galatea.Diagnostics.IDebugger debugger = new Gala.Dolly.Test.TestDebugger();
+            DebuggerLogLevelSettings.Initialize(Properties.Settings.Default.DebuggerLogLevel, Properties.Settings.Default.DebuggerAlertLevel);
+            IDebugger debugger = new Gala.Dolly.Test.TestDebugger();
 
             Gala.Data.Databases.SerializedDataAccessManager serializedDataAccessManager =
                 new Gala.Data.Databases.SerializedDataAccessManager(Properties.Settings.Default.DataAccessManagerConnectionString);
@@ -84,7 +86,12 @@ namespace Gala.Dolly.Test
             // Shutdown AI Engine
             engine.Shutdown();
 
-            started = false;
+            // Save Runtime Settings
+            Properties.Settings.Default.DebuggerLogLevel = DebuggerLogLevelSettings.DebuggerLogLevel;
+            Properties.Settings.Default.DebuggerAlertLevel = DebuggerLogLevelSettings.DebuggerAlertLevel;
+            Properties.Settings.Default.Save();
+
+            //started = false;
         }
 
 

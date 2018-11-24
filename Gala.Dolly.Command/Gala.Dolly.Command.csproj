@@ -95,11 +95,6 @@
     <Compile Include="TestEngine.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="TestModule_v1343.cs" />
-    <Compile Include="TestModule_v1344.cs" />
-    <Compile Include="TestModule_v1345.cs" />
-    <Compile Include="TestModule_v1346.cs" />
-    <Compile Include="TestModule_v1347.cs" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
@@ -130,9 +125,8 @@
     <None Include="..\Gala.Dolly\Gala.Dolly.pfx">
       <Link>Gala.Dolly.pfx</Link>
     </None>
-    <None Include="app.config" />
-    <None Include="Gala.Dolly.Command.config">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    <None Include="app.config">
+      <SubType>Designer</SubType>
     </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
