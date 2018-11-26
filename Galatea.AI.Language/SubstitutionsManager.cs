@@ -108,21 +108,14 @@ namespace Galatea.AI.Language
         {
             public Substitution(string valueToReplace, string replaceWithValue, bool applyToOriginalResponse)
             {
-                _valueToReplace = valueToReplace;
-                _replaceWithValue = replaceWithValue;
-                _applyToOriginalResponse = applyToOriginalResponse;
+                ValueToReplace = valueToReplace;
+                ReplaceWithValue = replaceWithValue;
+                ApplyToOriginalResponse = applyToOriginalResponse;
             }
 
-            public string ValueToReplace { get { return _valueToReplace; } }
-            public string ReplaceWithValue { get { return _replaceWithValue; } }
-            public bool ApplyToOriginalResponse
-            {
-                get { return _applyToOriginalResponse; }
-                set { _applyToOriginalResponse = value; }
-            }
-
-            private readonly string _valueToReplace, _replaceWithValue;
-            private bool _applyToOriginalResponse;
+            public string ValueToReplace { get; }
+            public string ReplaceWithValue { get; }
+            public bool ApplyToOriginalResponse { get; }
         }
 
         private SubstitutionList _substitutions;
