@@ -77,8 +77,10 @@ namespace Gala.Dolly.Test
 
             _ai = robot;
 
+            /*
             // Apply default conversational labels
             _ai.LanguageModel.ChatbotManager.Current = new Chatbot(Properties.Settings.Default.ChatBotName);
+             */
 
             InitializeDatabase();
         }

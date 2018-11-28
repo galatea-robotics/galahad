@@ -138,6 +138,10 @@
       <Project>{fce634b4-5a87-4519-98d4-240b4a42f8d5}</Project>
       <Name>Gala.Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Gala.Dolly.Chatbots\Gala.Dolly.Chatbots.csproj">
+      <Project>{8378c9ba-915f-4018-9944-8578f2855ff1}</Project>
+      <Name>Gala.Dolly.Chatbots</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Galatea.AI.Abstract\Galatea.AI.Abstract.csproj">
       <Project>{25141e11-c310-4d1f-b509-c130811104b0}</Project>
       <Name>Galatea.AI.Abstract</Name>

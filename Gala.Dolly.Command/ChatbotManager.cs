@@ -2,14 +2,23 @@
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using Galatea.Runtime;
+using Galatea.Runtime.Services;
 
 namespace Gala.Dolly.Test
 {
+    using Chatbots.Properties;
+
     /// <summary>
     /// Contains a collection of hard-coded defined Chatbots downloaded from the internet.
     /// </summary>
     internal sealed class ChatbotManager : KeyedCollection<string, IChatbot>, IChatbotManager
     {
+        internal ChatbotManager()
+        {
+            // Initialize Default
+            _chatbot = new DefaultChatbot(Settings.Default.ChatbotDefaultName);
+        }
+
         IChatbot IChatbotManager.Current
         {
             get { return _chatbot; }
@@ -37,6 +46,15 @@ namespace Gala.Dolly.Test
         protected override string GetKeyForItem(IChatbot item)
         {
             return item.Name;
+        }
+
+        private class DefaultChatbot : Galatea.Runtime.Services.Chatbot
+        {
+            public DefaultChatbot(string name) : base(name)
+            {
+            }
+
+            public override string Greeting { get => Settings.Default.ChatbotDefaultResponse; }
         }
 
         private IChatbot _chatbot;
