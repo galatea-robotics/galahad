@@ -5,6 +5,8 @@ using System;
 
 namespace Gala.Dolly.Test
 {
+    using Galatea.AI.Imaging;
+    using Galatea.AI.Imaging.Configuration;
     using Galatea.Diagnostics;
     using Galatea.Imaging.IO;
     using Galatea.IO;
@@ -25,9 +27,41 @@ namespace Gala.Dolly.Test
         {
             System.AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
 
-            // Load Local Settings
-            if (System.IO.File.Exists("Gala.Dolly.Command.config"))
-                AppDomain.CurrentDomain.SetData("APP_CONFIG_FILE", "Gala.Dolly.Command.config");
+            //// Load Local Settings
+            //if (System.IO.File.Exists("Gala.Dolly.Command.config"))
+            //    AppDomain.CurrentDomain.SetData("APP_CONFIG_FILE", "Gala.Dolly.Command.config");
+
+            //Properties.Settings.Default.ImagingSettings = new ImagingSettings
+            //{
+            //    Timeout = 2000,
+            //    SuppressTimeout = true,
+            //    ColorStatsSettings = new Galatea.AI.Imaging.Configuration.ColorStatsSettings
+            //    {
+            //        StatisticalAnalysisTypes = Galatea.AI.Math.StatsTypes.Mean
+            //    },
+            //    MonochromeBlobFilterSettings = new MonochromeBlobFilterSettings
+            //    {
+            //        ContrastCorrectionFactor = 0,
+            //        AdaptiveSmoothingFactor = 0.25,
+            //        FrameWidth = 10
+            //    },
+            //    BlobPointSettings = new BlobPointSettings
+            //    {
+            //        LineSegmentThreshold = 20,
+            //        LineAngleThreshold = 10,
+            //        CurveAngleThreshold = 27
+            //    },
+            //    TemplateRecognitionSettings = new TemplateRecognitionSettings
+            //    {
+            //        ColorBrightnessThreshold = 5,
+            //        ColorSaturationThreshold = 5,
+            //        ShapeOblongThreshold = 1.75M,
+            //        ShapeOblongRecognitionNormalization = true,
+            //        IdentifyShapeCertaintyMinimum = 65
+            //    }
+            //};
+            //Properties.Settings.Default.Save();
+
 
             // Start Galatea Robotics Engine
             Program.Startup();

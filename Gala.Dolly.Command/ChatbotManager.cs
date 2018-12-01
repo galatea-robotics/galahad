@@ -6,7 +6,7 @@ using Galatea.Runtime.Services;
 
 namespace Gala.Dolly.Test
 {
-    using Chatbots.Properties;
+    using Gala.Dolly.Test.Properties;
 
     /// <summary>
     /// Contains a collection of hard-coded defined Chatbots downloaded from the internet.
@@ -16,7 +16,7 @@ namespace Gala.Dolly.Test
         internal ChatbotManager()
         {
             // Initialize Default
-            _chatbot = new DefaultChatbot(Settings.Default.ChatbotDefaultName);
+            _chatbot = new DefaultChatbot(Settings.Default.DefaultChatbotName);
         }
 
         IChatbot IChatbotManager.Current
@@ -54,7 +54,7 @@ namespace Gala.Dolly.Test
             {
             }
 
-            public override string Greeting { get => Settings.Default.ChatbotDefaultResponse; }
+            public override string Greeting { get => Settings.Default.DefaultChatbotResponse; }
         }
 
         private IChatbot _chatbot;

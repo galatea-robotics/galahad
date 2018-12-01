@@ -34,18 +34,6 @@ namespace Gala.Dolly.Test.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("MARIA")]
-        public string ChatBotName {
-            get {
-                return ((string)(this["ChatBotName"]));
-            }
-            set {
-                this["ChatBotName"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("Peanut")]
         public string DefaultUserName {
             get {
@@ -53,6 +41,30 @@ namespace Gala.Dolly.Test.Properties {
             }
             set {
                 this["DefaultUserName"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("MARIA")]
+        public string DefaultChatbotName {
+            get {
+                return ((string)(this["DefaultChatbotName"]));
+            }
+            set {
+                this["DefaultChatbotName"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Because I\'m awesome!")]
+        public string DefaultChatbotResponse {
+            get {
+                return ((string)(this["DefaultChatbotResponse"]));
+            }
+            set {
+                this["DefaultChatbotResponse"] = value;
             }
         }
         
@@ -70,7 +82,7 @@ namespace Gala.Dolly.Test.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Event")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Diagnostic")]
         public global::Galatea.Diagnostics.DebuggerLogLevel DebuggerLogLevel {
             get {
                 return ((global::Galatea.Diagnostics.DebuggerLogLevel)(this["DebuggerLogLevel"]));
@@ -94,29 +106,33 @@ namespace Gala.Dolly.Test.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("\r\n                    <ImagingSettings xmlns:xsi=\"http://www.w3.org/2001/XMLSchem" +
-            "a-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">\r\n                     " +
-            "   <Timeout>0</Timeout>\r\n                        <SuppressTimeout>false</Suppres" +
-            "sTimeout>\r\n                        <ColorStatsSettings>\r\n                       " +
-            "     <StatisticalAnalysisTypes>Mean</StatisticalAnalysisTypes>\r\n                " +
-            "        </ColorStatsSettings>\r\n                        <MonochromeBlobFilterSett" +
-            "ings>\r\n                            <ContrastCorrectionFactor>0.25</ContrastCorre" +
-            "ctionFactor>\r\n                            <AdaptiveSmoothingFactor>0.25</Adaptiv" +
-            "eSmoothingFactor>\r\n                            <FrameWidth>10</FrameWidth>\r\n    " +
-            "                    </MonochromeBlobFilterSettings>\r\n                        <Bl" +
-            "obPointSettings>\r\n                            <LineSegmentThreshold>18</LineSegm" +
-            "entThreshold>\r\n                            <LineAngleThreshold>9</LineAngleThres" +
-            "hold>\r\n                            <CurveAngleThreshold>27</CurveAngleThreshold>" +
-            "\r\n                        </BlobPointSettings>\r\n                        <Templat" +
-            "eRecognitionSettings>\r\n                            <ColorBrightnessThreshold>0</" +
-            "ColorBrightnessThreshold>\r\n                            <ColorSaturationThreshold" +
-            ">0</ColorSaturationThreshold>\r\n                            <ShapeOblongThreshold" +
-            ">0</ShapeOblongThreshold>\r\n                            <ShapeOblongRecognitionLe" +
-            "vel>0</ShapeOblongRecognitionLevel>\r\n                            <ShapeOblongRec" +
-            "ognitionNormalization>false</ShapeOblongRecognitionNormalization>\r\n             " +
-            "               <IdentifyShapeCertaintyMinimum>0</IdentifyShapeCertaintyMinimum>\r" +
-            "\n                        </TemplateRecognitionSettings>\r\n                    </I" +
-            "magingSettings>\r\n                ")]
+        [global::System.Configuration.DefaultSettingValueAttribute(@"<?xml version=""1.0"" encoding=""utf-16""?>
+<ImagingSettings xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance"" xmlns:xsd=""http://www.w3.org/2001/XMLSchema"">
+  <Timeout>2000</Timeout>
+  <SuppressTimeout>true</SuppressTimeout>
+  <DebugRecognitionSaveImages>true</DebugRecognitionSaveImages>
+  <ColorStatsSettings>
+    <StatisticalAnalysisTypes>Mean</StatisticalAnalysisTypes>
+  </ColorStatsSettings>
+  <MonochromeBlobFilterSettings>
+    <ContrastCorrectionFactor>-64</ContrastCorrectionFactor>
+    <AdaptiveSmoothingFactor>0.25</AdaptiveSmoothingFactor>
+    <FrameWidth>10</FrameWidth>
+  </MonochromeBlobFilterSettings>
+  <BlobPointSettings>
+    <LineSegmentThreshold>18</LineSegmentThreshold>
+    <LineAngleThreshold>9</LineAngleThreshold>
+    <CurveAngleThreshold>27</CurveAngleThreshold>
+  </BlobPointSettings>
+  <TemplateRecognitionSettings>
+    <ColorBrightnessThreshold>6</ColorBrightnessThreshold>
+    <ColorSaturationThreshold>5</ColorSaturationThreshold>
+    <ShapeOblongThreshold>1.75</ShapeOblongThreshold>
+    <ShapeOblongRecognitionLevel>2</ShapeOblongRecognitionLevel>
+    <ShapeOblongRecognitionNormalization>true</ShapeOblongRecognitionNormalization>
+    <IdentifyShapeCertaintyMinimum>65</IdentifyShapeCertaintyMinimum>
+  </TemplateRecognitionSettings>
+</ImagingSettings>")]
         public global::Galatea.AI.Imaging.ImagingSettings ImagingSettings {
             get {
                 return ((global::Galatea.AI.Imaging.ImagingSettings)(this["ImagingSettings"]));

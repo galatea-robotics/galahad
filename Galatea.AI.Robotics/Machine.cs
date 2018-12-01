@@ -8,7 +8,7 @@ namespace Galatea.AI.Robotics
     /// A running process that contains Artificial Intelligence methods for hardware 
     /// feedback and control.
     /// </summary>
-    internal sealed class Machine : RuntimeContainer, SensoryMotorSystem
+    public sealed class Machine : RuntimeContainer, SensoryMotorSystem
     {
         void IFoundation.Initialize(IEngine engine)
         {

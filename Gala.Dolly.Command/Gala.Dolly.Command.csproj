@@ -10,15 +10,12 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Gala.Dolly.Test</RootNamespace>
     <AssemblyName>Gala.Dolly.Command</AssemblyName>
+    <UserAssemblyVersion>1.2.0.2</UserAssemblyVersion>
     <ApplicationIcon>..\Galatea\Galatea.ico</ApplicationIcon>
     <StartupObject>Gala.Dolly.Test.Program</StartupObject>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>..\Gala.Dolly\Gala.Dolly.pfx</AssemblyOriginatorKeyFile>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
-    <FileUpgradeFlags>
-    </FileUpgradeFlags>
-    <UpgradeBackupLocation>
-    </UpgradeBackupLocation>
     <OldToolsVersion>2.0</OldToolsVersion>
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
@@ -82,6 +79,7 @@
       <Link>Properties\Version.cs</Link>
     </Compile>
     <Compile Include="ChatbotManager.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestDebugger.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -119,7 +117,7 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <None Include="..\..\..\Users\User\AppData\Local\General_Applications\Gala.Dolly.Command.exe_StrongName_utawil2wfzca0gplmxns1l1vbdoj1rik\1.1.1.3\user.config">
+    <None Include="$(LocalAppData)\General_Applications\Gala.Dolly.Command.exe_StrongName_utawil2wfzca0gplmxns1l1vbdoj1rik\$(UserAssemblyVersion)\user.config">
       <Link>Properties\user.config</Link>
     </None>
     <None Include="..\Gala.Dolly\Gala.Dolly.pfx">
@@ -137,10 +135,6 @@
     <ProjectReference Include="..\Gala.Data\Gala.Data.csproj">
       <Project>{fce634b4-5a87-4519-98d4-240b4a42f8d5}</Project>
       <Name>Gala.Data</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Gala.Dolly.Chatbots\Gala.Dolly.Chatbots.csproj">
-      <Project>{8378c9ba-915f-4018-9944-8578f2855ff1}</Project>
-      <Name>Gala.Dolly.Chatbots</Name>
     </ProjectReference>
     <ProjectReference Include="..\Galatea.AI.Abstract\Galatea.AI.Abstract.csproj">
       <Project>{25141e11-c310-4d1f-b509-c130811104b0}</Project>
