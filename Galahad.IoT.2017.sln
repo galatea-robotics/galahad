@@ -59,7 +59,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Galatea.AI.Imaging", "Galat
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Galatea.AI.Abstract", "Galatea.AI.Abstract\_NETStandard\Galatea.AI.Abstract.csproj", "{356F1914-4F7F-44D8-8825-63BA82196446}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Galatea.AI", "Galatea.AI\_NETStandard\Galatea.AI.csproj", "{337F9DCC-28A2-4594-B3A5-5D2AC759CCD2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Galatea.AI", "Galatea.AI\_NETStandard\Galatea.AI.csproj", "{337F9DCC-28A2-4594-B3A5-5D2AC759CCD2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Accord.Imaging", "..\Library\Accord\Accord.Imaging\_NETStandard1.3\Accord.Imaging.csproj", "{05E1D2F5-F28B-4689-B607-33EA288125FF}"
 EndProject
@@ -88,8 +88,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Galahad.Base", "Galahad.Base\Galahad.Base.csproj", "{1A7D25F4-715B-472B-9C12-A0FCB2E51550}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Galahad.Client", "Galahad.Client\Galahad.Client.csproj", "{DCD72E78-42C4-4E06-AFB1-3E4C956975B9}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjXPorter", "..\ProjXPorter\ProjXPorter.csproj", "{68E19AF6-9631-4509-B846-E494B5852226}"
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
@@ -523,23 +521,6 @@ Global
 		{DCD72E78-42C4-4E06-AFB1-3E4C956975B9}.Test|x86.ActiveCfg = Release|x86
 		{DCD72E78-42C4-4E06-AFB1-3E4C956975B9}.Test|x86.Build.0 = Release|x86
 		{DCD72E78-42C4-4E06-AFB1-3E4C956975B9}.Test|x86.Deploy.0 = Release|x86
-		{68E19AF6-9631-4509-B846-E494B5852226}.Analysis|ARM.ActiveCfg = Release|Any CPU
-		{68E19AF6-9631-4509-B846-E494B5852226}.Analysis|ARM.Build.0 = Release|Any CPU
-		{68E19AF6-9631-4509-B846-E494B5852226}.Analysis|x86.ActiveCfg = Release|Any CPU
-		{68E19AF6-9631-4509-B846-E494B5852226}.Analysis|x86.Build.0 = Release|Any CPU
-		{68E19AF6-9631-4509-B846-E494B5852226}.Debug Client|ARM.ActiveCfg = Debug|Any CPU
-		{68E19AF6-9631-4509-B846-E494B5852226}.Debug Client|ARM.Build.0 = Debug|Any CPU
-		{68E19AF6-9631-4509-B846-E494B5852226}.Debug Client|x86.ActiveCfg = Release|Any CPU
-		{68E19AF6-9631-4509-B846-E494B5852226}.Debug|ARM.ActiveCfg = Release|Any CPU
-		{68E19AF6-9631-4509-B846-E494B5852226}.Debug|x86.ActiveCfg = Release|Any CPU
-		{68E19AF6-9631-4509-B846-E494B5852226}.Release|ARM.ActiveCfg = Release|Any CPU
-		{68E19AF6-9631-4509-B846-E494B5852226}.Release|ARM.Build.0 = Release|Any CPU
-		{68E19AF6-9631-4509-B846-E494B5852226}.Release|x86.ActiveCfg = Release|Any CPU
-		{68E19AF6-9631-4509-B846-E494B5852226}.Release|x86.Build.0 = Release|Any CPU
-		{68E19AF6-9631-4509-B846-E494B5852226}.Test|ARM.ActiveCfg = Release|Any CPU
-		{68E19AF6-9631-4509-B846-E494B5852226}.Test|ARM.Build.0 = Release|Any CPU
-		{68E19AF6-9631-4509-B846-E494B5852226}.Test|x86.ActiveCfg = Release|Any CPU
-		{68E19AF6-9631-4509-B846-E494B5852226}.Test|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -563,7 +544,6 @@ Global
 		{337F9DCC-28A2-4594-B3A5-5D2AC759CCD2} = {7D499A56-AA6C-4C36-AB6A-61FFAC167A08}
 		{05E1D2F5-F28B-4689-B607-33EA288125FF} = {20B6C01B-ECE5-41C9-BB80-C3855476CBA7}
 		{FE90CEFF-9A38-4D76-8386-75EE282D61C1} = {123D7E8F-1CCF-4C0C-A8C5-3984B5EBD6A1}
-		{68E19AF6-9631-4509-B846-E494B5852226} = {123D7E8F-1CCF-4C0C-A8C5-3984B5EBD6A1}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AE9959E3-F70E-4A8F-A865-CBCF8146EFC5}
