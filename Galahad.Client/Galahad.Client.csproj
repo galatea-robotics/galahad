@@ -1,0 +1,182 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProjectGuid>{DCD72E78-42C4-4E06-AFB1-3E4C956975B9}</ProjectGuid>
+    <OutputType>AppContainerExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Galahad.Client</RootNamespace>
+    <AssemblyName>Galahad.Client</AssemblyName>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
+    <TargetPlatformVersion>10.0.14393.0</TargetPlatformVersion>
+    <TargetPlatformMinVersion>10.0.10240.0</TargetPlatformMinVersion>
+    <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <PackageCertificateKeyFile>..\Galahad.Robotics\Galahad.pfx</PackageCertificateKeyFile>
+    <AppxAutoIncrementPackageRevision>False</AppxAutoIncrementPackageRevision>
+    <AppxBundle>Always</AppxBundle>
+    <AppxBundlePlatforms>x86|arm</AppxBundlePlatforms>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>..\bin\Galahad.Client\x86\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;CLIENT;NETFX_CORE;WINDOWS_UWP;CODE_ANALYSIS</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <CodeAnalysisRuleSet />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>..\bin\Galahad.Client\x86\</OutputPath>
+    <DefineConstants>TRACE;CLIENT;NETFX_CORE;WINDOWS_UWP;CODE_ANALYSIS</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+    <CodeAnalysisRuleSet />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>..\bin\Galahad.Client\ARM\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;CLIENT;NETFX_CORE;WINDOWS_UWP;CODE_ANALYSIS</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <CodeAnalysisRuleSet />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM'">
+    <OutputPath>..\bin\Galahad.Client\ARM\</OutputPath>
+    <DefineConstants>TRACE;CLIENT;NETFX_CORE;WINDOWS_UWP;CODE_ANALYSIS</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+    <CodeAnalysisRuleSet />
+  </PropertyGroup>
+  <ItemGroup>
+    <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
+    <Content Include="..\..\Local Settings\Galahad.Client.Config.json">
+      <Link>Properties\Galahad.Client.Config.json</Link>
+    </Content>
+    <Content Include="..\Galahad\Assets\Square44x44Logo.scale-100_altform-unplated.png">
+      <Link>Assets\Square44x44Logo.scale-100_altform-unplated.png</Link>
+    </Content>
+    <Content Include="Properties\Default.rd.xml" />
+    <None Include="..\Galahad.Robotics\Galahad.pfx">
+      <Link>Galahad.pfx</Link>
+    </None>
+    <None Include="project.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\Galahad.Robotics\Properties\Galahad.cs">
+      <Link>Properties\Galahad.cs</Link>
+    </Compile>
+    <Compile Include="..\Galahad.Robotics\Properties\Galahad.Version.cs">
+      <Link>Properties\Galahad.Version.cs</Link>
+    </Compile>
+    <Compile Include="..\Galatea.Globalization\ChatbotResources.Designer.cs">
+      <Link>Globalization\ChatbotResources.Designer.cs</Link>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ChatbotResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainPage.xaml.cs" />
+    <Compile Include="Net\Dispatcher.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\ClientSettings.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <AppxManifest Include="Package.appxmanifest">
+      <SubType>Designer</SubType>
+    </AppxManifest>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\Galahad\Assets\LockScreenLogo.scale-200.png">
+      <Link>Assets\LockScreenLogo.scale-200.png</Link>
+    </Content>
+    <Content Include="..\Galahad\Assets\SplashScreen.scale-100.png">
+      <Link>Assets\SplashScreen.scale-100.png</Link>
+    </Content>
+    <Content Include="..\Galahad\Assets\SplashScreen.scale-125.png">
+      <Link>Assets\SplashScreen.scale-125.png</Link>
+    </Content>
+    <Content Include="..\Galahad\Assets\Square150x150Logo.scale-200.png">
+      <Link>Assets\Square150x150Logo.scale-200.png</Link>
+    </Content>
+    <Content Include="..\Galahad\Assets\Square44x44Logo.targetsize-256_altform-unplated.png">
+      <Link>Assets\Square44x44Logo.targetsize-256_altform-unplated.png</Link>
+    </Content>
+    <Content Include="..\Galahad\Assets\Square44x44Logo.targetsize-48_altform-unplated.png">
+      <Link>Assets\Square44x44Logo.targetsize-48_altform-unplated.png</Link>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Gala.Data.Config\Gala.Data.Config.csproj">
+      <Project>{d89d2d82-4ff1-42e6-87f8-d7d353204150}</Project>
+      <Name>Gala.Data.Config</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Galahad.Base\Galahad.Base.csproj">
+      <Project>{1a7d25f4-715b-472b-9c12-a0fcb2e51550}</Project>
+      <Name>Galahad.Base</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Galatea.ComponentModel\_NETStandard\Galatea.ComponentModel.csproj">
+      <Project>{cf7fd784-4522-4fd4-acca-ec36850e3555}</Project>
+      <Name>Galatea.ComponentModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Galatea\_NETStandard\Galatea.Core.csproj">
+      <Project>{ea2b3b64-ef42-4e8f-b47a-1bb76969a415}</Project>
+      <Name>Galatea.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="..\Galatea.Globalization\ChatbotResources.resx">
+      <Link>Globalization\ChatbotResources.resx</Link>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ChatbotResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
+    <VisualStudioVersion>14.0</VisualStudioVersion>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>..\Galahad.Robotics\Galahad.pfx</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

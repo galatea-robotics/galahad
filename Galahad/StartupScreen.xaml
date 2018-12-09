@@ -1,0 +1,27 @@
+﻿<Page
+    x:Class="Galahad.StartupScreen"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Galahad"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d" MinWidth="768" MinHeight="432" Unloaded="Page_Unloaded">
+
+    <Grid Background="#FFB6C5E6">
+        <Canvas>
+            <StackPanel x:Name="imageContainer" Width="620" Height="300">
+                <Image x:Name="image" Source="Assets/SplashScreen.scale-100.png" />
+            </StackPanel>
+            <ProgressRing x:Name="progressRing" IsActive="True" Height="40" Width="40" HorizontalAlignment="Center" Foreground="#FFFF41A3" Canvas.ZIndex="2" />
+            <StackPanel x:Name="progressContainer" Width="620" Canvas.ZIndex="1">
+                <Rectangle Fill="#FFB6C5E6" Height="24" Width="560"  Margin="0,10,0,0" Opacity="0.50" Stroke="#FF5A5573" />
+                <TextBlock x:Name="status" TextWrapping="Wrap" Text="Initializing Status...." Height="19" Width="540" VerticalAlignment="Bottom" Margin="30,-22,30,2" Foreground="White" />
+                <ProgressBar x:Name="progressBar" Height="12" Width="560" VerticalAlignment="Bottom" Canvas.Top="280" Margin="30,4" />
+            </StackPanel>
+            <StackPanel x:Name="errorHandlerContainer" Height="24" Width="620" Canvas.ZIndex="2" Padding="30,0">
+                <Button x:Name="retryButton" Content="Retry" FontSize="12" Width="80" Height="24" Padding="8,2" HorizontalAlignment="Center" Margin="388,0,92,0" Click="retryButton_Click" Foreground="#FFDAE2EC" />
+                <Button x:Name="quitButton" Content="Quit" FontSize="12" Width="80" Height="24" Padding="8,2" HorizontalAlignment="Right" Margin="0,-24,0,0" Click="quitButton_Click" Foreground="#FFDAE2EC" />
+            </StackPanel>
+        </Canvas>
+    </Grid>
+</Page>
