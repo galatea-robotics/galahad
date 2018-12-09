@@ -1,0 +1,217 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B8A04893-2AA4-4387-BEE1-80F2BF5DDEC3}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Galahad.Robotics</RootNamespace>
+    <AssemblyName>Galahad.Robotics</AssemblyName>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
+    <TargetPlatformVersion>10.0.17134.0</TargetPlatformVersion>
+    <TargetPlatformMinVersion>10.0.16299.0</TargetPlatformMinVersion>
+    <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
+    <FileAlignment>512</FileAlignment>
+    <PackageCertificateKeyFile>...\Galahad\Galahad.pfx</PackageCertificateKeyFile>
+    <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <RuntimeIdentifiers>win10-arm;win10-arm-aot;win10-x86;win10-x86-aot;win10-x64;win10-x64-aot</RuntimeIdentifiers>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>..\bin\Galahad\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <PlatformTarget>x86</PlatformTarget>
+    <OutputPath>..\bin\Galahad\x86\Release</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet />
+    <DocumentationFile>..\bin\Galahad\x86\Galahad.Robotics.xml</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
+    <PlatformTarget>ARM</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>..\bin\Galahad\ARM\Debug</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM'">
+    <PlatformTarget>ARM</PlatformTarget>
+    <OutputPath>..\bin\Galahad\ARM\Release</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet />
+  </PropertyGroup>
+  <ItemGroup>
+    <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
+    <None Include="Galahad.pfx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\Gala.Dolly.Chatbots\Alice.cs">
+      <Link>Chatbots\Alice.cs</Link>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Assembly.cs" />
+    <Compile Include="Chatbots\ChatbotManager.cs" />
+    <Compile Include="Diagnostics\Debugger.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Diagnostics\DebuggerLogLevelExtension.cs" />
+    <Compile Include="MotorControls\MotorCommand.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="MotorControls\MotorCommandCollection.cs" />
+    <Compile Include="MotorControls\MotorController.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="MotorControls\MultiPinMotorCommand.cs" />
+    <Compile Include="MotorControls\PinCommand.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="MotorControls\PinCommandCollection.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Galahad.cs" />
+    <Compile Include="Properties\Galahad.Version.cs" />
+    <Compile Include="Properties\UWPSettings.cs" />
+    <Compile Include="Runtime\Engine.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Runtime\EngineInitializationEventArgs.cs" />
+    <Compile Include="Runtime\EngineInitializationResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EngineInitializationResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="MachineSystem.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SensorAnalyzer.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Speech\Extension.cs" />
+    <Compile Include="Speech\SpeechModule.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Speech\SpeechRecognition.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Speech\TextToSpeech.cs">
+      <SubType>Component</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Library\ChatBots\AIMLBot\_UWP\AIMLBot.csproj">
+      <Project>{80e74917-5c0d-489d-94ae-ca671863af73}</Project>
+      <Name>AIMLBot</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Gala.Data\_NETStandard\Gala.Data.csproj">
+      <Project>{07ce2a22-d0c9-472a-aedb-a80762cef39e}</Project>
+      <Name>Gala.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Galatea.AI.Abstract\_NETStandard\Galatea.AI.Abstract.csproj">
+      <Project>{356f1914-4f7f-44d8-8825-63ba82196446}</Project>
+      <Name>Galatea.AI.Abstract</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Galatea.AI.Imaging\_NETStandard\Galatea.AI.Imaging.csproj">
+      <Project>{c63c99ad-93bf-4a15-ba4e-511d5dcf559b}</Project>
+      <Name>Galatea.AI.Imaging</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Galatea.AI\_NETStandard\Galatea.AI.csproj">
+      <Project>{337f9dcc-28a2-4594-b3a5-5d2ac759ccd2}</Project>
+      <Name>Galatea.AI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Galatea.Globalization\_NETStandard\Galatea.Globalization.csproj">
+      <Project>{befa8a69-280b-4216-ba4d-412711c3eb9a}</Project>
+      <Name>Galatea.Globalization</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Galatea.Runtime\_NETStandard\Galatea.Runtime.csproj">
+      <Project>{3f4664f6-4e0e-4c2a-9b22-ae31e468d378}</Project>
+      <Name>Galatea.Runtime</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Galatea\_NETStandard\Galatea.Core.csproj">
+      <Project>{ea2b3b64-ef42-4e8f-b47a-1bb76969a415}</Project>
+      <Name>Galatea.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
+      <Version>6.0.1</Version>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Runtime\EngineInitializationResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>EngineInitializationResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
+    <VisualStudioVersion>14.0</VisualStudioVersion>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>Galahad.pfx</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Analysis|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>..\bin\Galahad\x86\Analysis\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <NoStdLib>true</NoStdLib>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Analysis|ARM'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Galahad\ARM\Analysis\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <NoStdLib>true</NoStdLib>
+    <DebugType>full</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
