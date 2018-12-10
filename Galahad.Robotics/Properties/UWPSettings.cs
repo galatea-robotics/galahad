@@ -14,12 +14,16 @@ namespace Galahad.Properties
         {
         }
 
+        private static string _filename;
+
         public static async Task<UWPSettings> Load(string path = @"Gala.Data.Config\UWPConfig.json")
         {
+            _filename = path;
+
             //https://docs.microsoft.com/en-us/windows/uwp/files/file-access-permissions
 
             Assembly configAsm = typeof(UWPSettings).GetTypeInfo().Assembly;
-            StorageFile file = await configAsm.GetStorageFile(ApplicationData.Current.LocalFolder, path);
+            StorageFile file = await configAsm.GetStorageFile(ApplicationData.Current.LocalFolder, _filename);
 
             string data = null;
             UWPSettings result = null;
@@ -47,13 +51,19 @@ namespace Galahad.Properties
             return result;
         }
 
-        public void Save(string filename = "config.json")
+        public async void Save()
         {
+            Assembly configAsm = typeof(UWPSettings).GetTypeInfo().Assembly;
+            StorageFile file = await configAsm.GetStorageFile(ApplicationData.Current.LocalFolder, _filename);
+
             string data = JsonConvert.SerializeObject(this);
-            System.IO.File.WriteAllText(filename, data);
+            System.IO.File.WriteAllText(file.Path, data);
         }
 
         public string DataAccessManagerConnectionString { get; set; }
+        public string DebuggerLogFileName { get; set; }
+        public Galatea.Diagnostics.DebuggerLogLevel DebuggerLogLevel { get; set; }
+        public Galatea.Diagnostics.DebuggerLogLevel DebuggerAlertLevel { get; set; }
         public string ChatbotName { get; set; }
         public string ChatbotAliceConfigFolder { get; set; }
         public string ChatbotResourcesFolder { get; set; }

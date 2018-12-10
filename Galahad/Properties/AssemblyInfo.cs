@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("Galahad")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Galahad Runtime for Windows Universal")]
 [assembly: AssemblyConfiguration("")]
 
 [assembly: ComVisible(false)]

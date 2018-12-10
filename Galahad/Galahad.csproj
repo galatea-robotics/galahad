@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -11,8 +11,8 @@
     <AssemblyName>Galahad</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
-    <TargetPlatformVersion>10.0.14393.0</TargetPlatformVersion>
-    <TargetPlatformMinVersion>10.0.10586.0</TargetPlatformMinVersion>
+    <TargetPlatformVersion>10.0.17134.0</TargetPlatformVersion>
+    <TargetPlatformMinVersion>10.0.16299.0</TargetPlatformMinVersion>
     <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -24,8 +24,8 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <DebugSymbols>true</DebugSymbols>
-    <OutputPath>..\bin\Galahad\x86\</OutputPath>
-    <DefineConstants>TRACE;DEBUG;NETFX_CORE;WINDOWS_UWP;CODE_ANALYSIS;DISABLE_XAML_GENERATED_BREAK_ON_UNHANDLED_EXCEPTION</DefineConstants>
+    <OutputPath>..\bin\Galahad\x86\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;NETFX_CORE;WINDOWS_UWP;DISABLE_XAML_GENERATED_BREAK_ON_UNHANDLED_EXCEPTION</DefineConstants>
     <NoWarn>;2008</NoWarn>
     <DebugType>full</DebugType>
     <PlatformTarget>x86</PlatformTarget>
@@ -79,9 +79,9 @@
     <Content Include="..\..\Local Settings\GalahadConfig.json">
       <Link>Properties\GalahadConfig.json</Link>
     </Content>
-    <Content Include="..\Galahad.log">
-      <Link>Galahad.log</Link>
-    </Content>
+    <None Include="$(USERPROFILE)\AppData\Local\Packages\GeneralApplications.Galahad.Robotics_gr56dcs0h0g50\LocalState\galahad.log">
+      <Link>UserProfile\galahad.log</Link>
+    </None>
     <Content Include="Properties\Default.rd.xml" />
     <None Include="$(USERPROFILE)\AppData\Local\Packages\GeneralApplications.Galahad.Robotics_gr56dcs0h0g50\LocalState\GalahadConfig.json">
       <Link>UserProfile\GalahadConfig.json</Link>
@@ -92,7 +92,6 @@
     <None Include="..\Galahad.Robotics\Galahad.pfx">
       <Link>Galahad.pfx</Link>
     </None>
-    <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="..\Galahad.Robotics\Properties\Galahad.cs">
@@ -109,7 +108,9 @@
     <Compile Include="MainPage.xaml.cs" />
     <Compile Include="Net\HttpRequest.cs" />
     <Compile Include="Net\HttpResponse.cs" />
-    <Compile Include="Net\HttpService.cs" />
+    <Compile Include="Net\HttpService.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Net\HttpTestClient.cs" />
     <Compile Include="PinPage.xaml.cs">
       <DependentUpon>PinPage.xaml</DependentUpon>
@@ -166,11 +167,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Gala.Data.Config\Gala.Data.Config.csproj">
-      <Project>{d89d2d82-4ff1-42e6-87f8-d7d353204150}</Project>
-      <Name>Gala.Data.Config</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Gala.Data\_UWP\Gala.Data.csproj">
+    <ProjectReference Include="..\Gala.Data\_NETStandard\Gala.Data.csproj">
       <Project>{07ce2a22-d0c9-472a-aedb-a80762cef39e}</Project>
       <Name>Gala.Data</Name>
     </ProjectReference>
@@ -190,10 +187,6 @@
       <Project>{337f9dcc-28a2-4594-b3a5-5d2ac759ccd2}</Project>
       <Name>Galatea.AI</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Galatea.ComponentModel\_NETStandard\Galatea.ComponentModel.csproj">
-      <Project>{cf7fd784-4522-4fd4-acca-ec36850e3555}</Project>
-      <Name>Galatea.ComponentModel</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Galatea.Globalization\_NETStandard\Galatea.Globalization.csproj">
       <Project>{befa8a69-280b-4216-ba4d-412711c3eb9a}</Project>
       <Name>Galatea.Globalization</Name>
@@ -207,7 +200,11 @@
       <Name>Galatea.Core</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
+      <Version>6.0.1</Version>
+    </PackageReference>
+  </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>
@@ -218,6 +215,11 @@
     <AssemblyOriginatorKeyFile>..\Galahad.Robotics\Galahad.pfx</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties __JSONSchema="http://json.schemastore.org/bower" />
+    </VisualStudio>
+  </ProjectExtensions>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

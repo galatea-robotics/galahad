@@ -145,6 +145,7 @@ namespace Galahad
                 catch (Exception ex)
                 {
                     await HandleExceptionAsync(ex);
+                    // TODO: Exit thread on error
                 }
             });
         }
@@ -168,7 +169,7 @@ namespace Galahad
                 try
                 {
                     // Start Web
-                    webService = new Galahad.Net.HttpService(App.Settings.HttpServiceHostPort);
+                    webService = new Galahad.Net.HttpService(App.UWPSettings.HttpServiceHostPort);
                     webService.Initialize(App.Engine);
 
                     App.Engine.HttpService.StartListener();
@@ -219,6 +220,8 @@ namespace Galahad
             App.HandleException(ref msg, ex);
             status.Text = "SOMETHING HAPPEN!!!  " + ex.Message;
 
+            // Log stack trace
+
             // Show Retry and Quit buttons
             progressRing.SetValue(Canvas.TopProperty, (double)progressRing.GetValue(Canvas.TopProperty) - 32);
             progressContainer.SetValue(Canvas.TopProperty, (double)progressContainer.GetValue(Canvas.TopProperty) - 32);
@@ -244,7 +247,7 @@ namespace Galahad
 
         private void Page_Unloaded(object sender, RoutedEventArgs e)
         {
-            if(_starting)
+            if (_starting)
             {
                 App.ShutdownEngine();
                 Application.Current.Exit();     // User closed the form before startup was complete.

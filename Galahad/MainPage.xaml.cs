@@ -303,15 +303,17 @@ namespace Galahad
         {
             switch (button.Name)
             {
-                case "leftForward": return App.Settings.GpioLeftForwardPin;
-                case "leftBack": return App.Settings.GpioLeftReversePin;
-                case "rightForward": return App.Settings.GpioRightForwardPin;
-                case "rightBack": return App.Settings.GpioRightReversePin;
+                case "leftForward": return App.UWPSettings.GpioLeftForwardPin;
+                case "leftBack": return App.UWPSettings.GpioLeftReversePin;
+                case "rightForward": return App.UWPSettings.GpioRightForwardPin;
+                case "rightBack": return App.UWPSettings.GpioRightReversePin;
                 default: throw new NotImplementedException();
             }
         }
 
         #endregion
+
+        public override string ProviderName => "Galahad Main Page";
 
         internal static MainPage Current { get { return _current; } }
 
