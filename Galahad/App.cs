@@ -50,8 +50,9 @@ namespace Galahad
             try
             {
                 _settings = await UWPSettings.Load("Properties\\GalahadConfig.json");
+                Galatea.Diagnostics.DebuggerLogLevelSettings.Initialize(_settings.DebuggerLogLevel, _settings.DebuggerAlertLevel);
+
                 _debugger = new Galahad.Robotics.Debugger();
-                _debugger.LogLevel = Galatea.Diagnostics.DebuggerLogLevel.Diagnostic;
                 _engine = new Galahad.Robotics.Engine(_settings, _debugger);
             }
             catch (Exception ex)
@@ -70,7 +71,7 @@ namespace Galahad
 
         internal static void ShutdownEngine()
         {
-            _engine.Shutdown();
+            _engine?.Shutdown();
             _engine = null;
         }
 

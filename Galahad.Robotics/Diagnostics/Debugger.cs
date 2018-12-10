@@ -90,13 +90,15 @@ namespace Galahad.Robotics
             {
                 string sOutput = string.Format(
                     System.Globalization.CultureInfo.InvariantCulture,
-                    Galatea.Globalization.DiagnosticResources.Debugger_Log_Message_Format, 
-                    level.GetToken(), System.DateTime.Today, System.DateTime.Now,
-                    System.DateTime.Now.Millisecond, message);
+                    Galatea.Globalization.DiagnosticResources.Debugger_Log_Message_Format,
+                    level.GetToken(), System.DateTime.Now, message);
 
                 System.Diagnostics.Debug.WriteLine(sOutput);
 
-                if (_fileLogger.IsLogging) _fileLogger.Log(sOutput);
+                if (_fileLogger != null && _fileLogger.IsLogging)
+                {
+                    _fileLogger.Log(sOutput);
+                }
             }
         }
 
@@ -115,6 +117,12 @@ namespace Galahad.Robotics
         /// </summary>
         private class DebuggerLogger : RuntimeComponent, IFileLogger
         {
+            private readonly object fileLock = new object();
+
+            public DebuggerLogger() : base()
+            {
+            }
+
             /// <summary>
             /// Gets a boolean indicating that the <see cref="FileLogger"/> is open and writing to a file.
             /// </summary>
@@ -133,9 +141,14 @@ namespace Galahad.Robotics
             {
                 _filename = filename;
 
-                //// Initialize FileStream
-                //FileStream stream = new FileStream(fileName, mode);
-                //_writer = new StreamWriter(stream);
+                var appDataFolder = Windows.Storage.ApplicationData.Current.LocalFolder;
+                var logFileName = Path.Combine(appDataFolder.Path, _filename);
+
+                if (!File.Exists(logFileName))
+                {
+                    appDataFolder.CreateFileAsync(_filename).GetResults();
+                    // TODO:  Make this Async
+                }
 
                 // Set status
                 _isLogging = true;
@@ -159,25 +172,14 @@ namespace Galahad.Robotics
             /// </param>
             public void Log(string message)
             {
-                // Initialize FileStream
-                FileStream stream = null;
-
-                try
+                lock (fileLock)
                 {
-                    stream = new FileStream(_filename, FileMode.Append);
-
+                    using (FileStream stream = new FileStream(_filename, FileMode.Append))
                     using (StreamWriter writer = new StreamWriter(stream))
                     {
-                        stream = null;
-
                         // TODO:  Make so we can open the file and view the Log without stopping the application.
                         writer.WriteLine(message);
                     }
-                }
-                finally
-                {
-                    if (stream != null)
-                        stream.Dispose();
                 }
             }
             /// <summary>

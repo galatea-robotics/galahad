@@ -109,7 +109,7 @@
     <Compile Include="Net\HttpRequest.cs" />
     <Compile Include="Net\HttpResponse.cs" />
     <Compile Include="Net\HttpService.cs">
-      <SubType>Component</SubType>
+      <SubType>Default</SubType>
     </Compile>
     <Compile Include="Net\HttpTestClient.cs" />
     <Compile Include="PinPage.xaml.cs">

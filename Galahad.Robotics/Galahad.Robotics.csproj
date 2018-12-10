@@ -70,29 +70,239 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
+    <Content Include="..\..\Library\ChatBots\AIMLBot\ConfigurationFiles\DefaultPredicates.xml">
+      <Link>Chatbots\ConfigurationFiles\DefaultPredicates.xml</Link>
+    </Content>
+    <Content Include="..\..\Library\ChatBots\AIMLBot\ConfigurationFiles\GenderSubstitutions.xml">
+      <Link>Chatbots\ConfigurationFiles\GenderSubstitutions.xml</Link>
+    </Content>
+    <Content Include="..\..\Library\ChatBots\AIMLBot\ConfigurationFiles\Person2Substitutions.xml">
+      <Link>Chatbots\ConfigurationFiles\Person2Substitutions.xml</Link>
+    </Content>
+    <Content Include="..\..\Library\ChatBots\AIMLBot\ConfigurationFiles\PersonSubstitutions.xml">
+      <Link>Chatbots\ConfigurationFiles\PersonSubstitutions.xml</Link>
+    </Content>
+    <Content Include="..\..\Library\ChatBots\AIMLBot\ConfigurationFiles\Settings.xml">
+      <Link>Chatbots\ConfigurationFiles\Settings.xml</Link>
+    </Content>
+    <Content Include="..\..\Library\ChatBots\AIMLBot\ConfigurationFiles\Splitters.xml">
+      <Link>Chatbots\ConfigurationFiles\Splitters.xml</Link>
+    </Content>
+    <Content Include="..\..\Library\ChatBots\AIMLBot\ConfigurationFiles\Substitutions.xml">
+      <Link>Chatbots\ConfigurationFiles\Substitutions.xml</Link>
+    </Content>
+    <Content Include="..\..\Resources\Chatbot\alice\ai.aiml">
+      <Link>Chatbots\Resources\alice\ai.aiml</Link>
+    </Content>
+    <Content Include="..\..\Resources\Chatbot\alice\alice.aiml">
+      <Link>Chatbots\Resources\alice\alice.aiml</Link>
+    </Content>
+    <Content Include="..\..\Resources\Chatbot\alice\astrology.aiml">
+      <Link>Chatbots\Resources\alice\astrology.aiml</Link>
+    </Content>
+    <Content Include="..\..\Resources\Chatbot\alice\atomic.aiml">
+      <Link>Chatbots\Resources\alice\atomic.aiml</Link>
+    </Content>
+    <Content Include="..\..\Resources\Chatbot\alice\badanswer.aiml">
+      <Link>Chatbots\Resources\alice\badanswer.aiml</Link>
+    </Content>
+    <Content Include="..\..\Resources\Chatbot\alice\biography.aiml">
+      <Link>Chatbots\Resources\alice\biography.aiml</Link>
+    </Content>
+    <Content Include="..\..\Resources\Chatbot\alice\bot.aiml">
+      <Link>Chatbots\Resources\alice\bot.aiml</Link>
+    </Content>
+    <Content Include="..\..\Resources\Chatbot\alice\bot_profile.aiml">
+      <Link>Chatbots\Resources\alice\bot_profile.aiml</Link>
+    </Content>
+    <Content Include="..\..\Resources\Chatbot\alice\client.aiml">
+      <Link>Chatbots\Resources\alice\client.aiml</Link>
+    </Content>
+    <Content Include="..\..\Resources\Chatbot\alice\client_profile.aiml">
+      <Link>Chatbots\Resources\alice\client_profile.aiml</Link>
+    </Content>
+    <Content Include="..\..\Resources\Chatbot\alice\computers.aiml">
+      <Link>Chatbots\Resources\alice\computers.aiml</Link>
+    </Content>
+    <Content Include="..\..\Resources\Chatbot\alice\continuation.aiml">
+      <Link>Chatbots\Resources\alice\continuation.aiml</Link>
+    </Content>
+    <Content Include="..\..\Resources\Chatbot\alice\date.aiml">
+      <Link>Chatbots\Resources\alice\date.aiml</Link>
+    </Content>
+    <Content Include="..\..\Resources\Chatbot\alice\default.aiml">
+      <Link>Chatbots\Resources\alice\default.aiml</Link>
+    </Content>
+    <Content Include="..\..\Resources\Chatbot\alice\drugs.aiml">
+      <Link>Chatbots\Resources\alice\drugs.aiml</Link>
+    </Content>
+    <Content Include="..\..\Resources\Chatbot\alice\emotion.aiml">
+      <Link>Chatbots\Resources\alice\emotion.aiml</Link>
+    </Content>
+    <Content Include="..\..\Resources\Chatbot\alice\food.aiml">
+      <Link>Chatbots\Resources\alice\food.aiml</Link>
+    </Content>
+    <Content Include="..\..\Resources\Chatbot\alice\geography.aiml">
+      <Link>Chatbots\Resources\alice\geography.aiml</Link>
+    </Content>
+    <Content Include="..\..\Resources\Chatbot\alice\gossip.aiml">
+      <Link>Chatbots\Resources\alice\gossip.aiml</Link>
+    </Content>
+    <Content Include="..\..\Resources\Chatbot\alice\history.aiml">
+      <Link>Chatbots\Resources\alice\history.aiml</Link>
+    </Content>
+    <Content Include="..\..\Resources\Chatbot\alice\humor.aiml">
+      <Link>Chatbots\Resources\alice\humor.aiml</Link>
+    </Content>
+    <Content Include="..\..\Resources\Chatbot\alice\imponderables.aiml">
+      <Link>Chatbots\Resources\alice\imponderables.aiml</Link>
+    </Content>
+    <Content Include="..\..\Resources\Chatbot\alice\inquiry.aiml">
+      <Link>Chatbots\Resources\alice\inquiry.aiml</Link>
+    </Content>
+    <Content Include="..\..\Resources\Chatbot\alice\interjection.aiml">
+      <Link>Chatbots\Resources\alice\interjection.aiml</Link>
+    </Content>
+    <Content Include="..\..\Resources\Chatbot\alice\iu.aiml">
+      <Link>Chatbots\Resources\alice\iu.aiml</Link>
+    </Content>
+    <Content Include="..\..\Resources\Chatbot\alice\knowledge.aiml">
+      <Link>Chatbots\Resources\alice\knowledge.aiml</Link>
+    </Content>
+    <Content Include="..\..\Resources\Chatbot\alice\literature.aiml">
+      <Link>Chatbots\Resources\alice\literature.aiml</Link>
+    </Content>
+    <Content Include="..\..\Resources\Chatbot\alice\loebner10.aiml">
+      <Link>Chatbots\Resources\alice\loebner10.aiml</Link>
+    </Content>
+    <Content Include="..\..\Resources\Chatbot\alice\money.aiml">
+      <Link>Chatbots\Resources\alice\money.aiml</Link>
+    </Content>
+    <Content Include="..\..\Resources\Chatbot\alice\movies.aiml">
+      <Link>Chatbots\Resources\alice\movies.aiml</Link>
+    </Content>
+    <Content Include="..\..\Resources\Chatbot\alice\mp0.aiml">
+      <Link>Chatbots\Resources\alice\mp0.aiml</Link>
+    </Content>
+    <Content Include="..\..\Resources\Chatbot\alice\mp1.aiml">
+      <Link>Chatbots\Resources\alice\mp1.aiml</Link>
+    </Content>
+    <Content Include="..\..\Resources\Chatbot\alice\mp2.aiml">
+      <Link>Chatbots\Resources\alice\mp2.aiml</Link>
+    </Content>
+    <Content Include="..\..\Resources\Chatbot\alice\mp3.aiml">
+      <Link>Chatbots\Resources\alice\mp3.aiml</Link>
+    </Content>
+    <Content Include="..\..\Resources\Chatbot\alice\mp4.aiml">
+      <Link>Chatbots\Resources\alice\mp4.aiml</Link>
+    </Content>
+    <Content Include="..\..\Resources\Chatbot\alice\mp5.aiml">
+      <Link>Chatbots\Resources\alice\mp5.aiml</Link>
+    </Content>
+    <Content Include="..\..\Resources\Chatbot\alice\mp6.aiml">
+      <Link>Chatbots\Resources\alice\mp6.aiml</Link>
+    </Content>
+    <Content Include="..\..\Resources\Chatbot\alice\music.aiml">
+      <Link>Chatbots\Resources\alice\music.aiml</Link>
+    </Content>
+    <Content Include="..\..\Resources\Chatbot\alice\numbers.aiml">
+      <Link>Chatbots\Resources\alice\numbers.aiml</Link>
+    </Content>
+    <Content Include="..\..\Resources\Chatbot\alice\personality.aiml">
+      <Link>Chatbots\Resources\alice\personality.aiml</Link>
+    </Content>
+    <Content Include="..\..\Resources\Chatbot\alice\phone.aiml">
+      <Link>Chatbots\Resources\alice\phone.aiml</Link>
+    </Content>
+    <Content Include="..\..\Resources\Chatbot\alice\pickup.aiml">
+      <Link>Chatbots\Resources\alice\pickup.aiml</Link>
+    </Content>
+    <Content Include="..\..\Resources\Chatbot\alice\politics.aiml">
+      <Link>Chatbots\Resources\alice\politics.aiml</Link>
+    </Content>
+    <Content Include="..\..\Resources\Chatbot\alice\primeminister.aiml">
+      <Link>Chatbots\Resources\alice\primeminister.aiml</Link>
+    </Content>
+    <Content Include="..\..\Resources\Chatbot\alice\primitive-math.aiml">
+      <Link>Chatbots\Resources\alice\primitive-math.aiml</Link>
+    </Content>
+    <Content Include="..\..\Resources\Chatbot\alice\psychology.aiml">
+      <Link>Chatbots\Resources\alice\psychology.aiml</Link>
+    </Content>
+    <Content Include="..\..\Resources\Chatbot\alice\reduction0.safe.aiml">
+      <Link>Chatbots\Resources\alice\reduction0.safe.aiml</Link>
+    </Content>
+    <Content Include="..\..\Resources\Chatbot\alice\reduction1.safe.aiml">
+      <Link>Chatbots\Resources\alice\reduction1.safe.aiml</Link>
+    </Content>
+    <Content Include="..\..\Resources\Chatbot\alice\reduction2.safe.aiml">
+      <Link>Chatbots\Resources\alice\reduction2.safe.aiml</Link>
+    </Content>
+    <Content Include="..\..\Resources\Chatbot\alice\reduction3.safe.aiml">
+      <Link>Chatbots\Resources\alice\reduction3.safe.aiml</Link>
+    </Content>
+    <Content Include="..\..\Resources\Chatbot\alice\reduction4.safe.aiml">
+      <Link>Chatbots\Resources\alice\reduction4.safe.aiml</Link>
+    </Content>
+    <Content Include="..\..\Resources\Chatbot\alice\reductions-update.aiml">
+      <Link>Chatbots\Resources\alice\reductions-update.aiml</Link>
+    </Content>
+    <Content Include="..\..\Resources\Chatbot\alice\religion.aiml">
+      <Link>Chatbots\Resources\alice\religion.aiml</Link>
+    </Content>
+    <Content Include="..\..\Resources\Chatbot\alice\salutations.aiml">
+      <Link>Chatbots\Resources\alice\salutations.aiml</Link>
+    </Content>
+    <Content Include="..\..\Resources\Chatbot\alice\science.aiml">
+      <Link>Chatbots\Resources\alice\science.aiml</Link>
+    </Content>
+    <Content Include="..\..\Resources\Chatbot\alice\sex.aiml">
+      <Link>Chatbots\Resources\alice\sex.aiml</Link>
+    </Content>
+    <Content Include="..\..\Resources\Chatbot\alice\sports.aiml">
+      <Link>Chatbots\Resources\alice\sports.aiml</Link>
+    </Content>
+    <Content Include="..\..\Resources\Chatbot\alice\stack.aiml">
+      <Link>Chatbots\Resources\alice\stack.aiml</Link>
+    </Content>
+    <Content Include="..\..\Resources\Chatbot\alice\stories.aiml">
+      <Link>Chatbots\Resources\alice\stories.aiml</Link>
+    </Content>
+    <Content Include="..\..\Resources\Chatbot\alice\that.aiml">
+      <Link>Chatbots\Resources\alice\that.aiml</Link>
+    </Content>
+    <Content Include="..\..\Resources\Chatbot\alice\update1.aiml">
+      <Link>Chatbots\Resources\alice\update1.aiml</Link>
+    </Content>
+    <Content Include="..\..\Resources\Chatbot\alice\wallace.aiml">
+      <Link>Chatbots\Resources\alice\wallace.aiml</Link>
+    </Content>
+    <Content Include="..\..\Resources\Chatbot\alice\xfind.aiml">
+      <Link>Chatbots\Resources\alice\xfind.aiml</Link>
+    </Content>
     <None Include="Galahad.pfx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="..\Gala.Dolly.Chatbots\Alice.cs">
       <Link>Chatbots\Alice.cs</Link>
-      <SubType>Component</SubType>
+      <SubType>Default</SubType>
     </Compile>
     <Compile Include="Assembly.cs" />
     <Compile Include="Chatbots\ChatbotManager.cs" />
     <Compile Include="Diagnostics\Debugger.cs">
-      <SubType>Component</SubType>
+      <SubType>Default</SubType>
     </Compile>
     <Compile Include="Diagnostics\DebuggerLogLevelExtension.cs" />
     <Compile Include="MotorControls\MotorCommand.cs">
-      <SubType>Component</SubType>
+      <SubType>Default</SubType>
     </Compile>
     <Compile Include="MotorControls\MotorCommandCollection.cs" />
     <Compile Include="MotorControls\MotorController.cs">
-      <SubType>Component</SubType>
+      <SubType>Default</SubType>
     </Compile>
     <Compile Include="MotorControls\MultiPinMotorCommand.cs" />
     <Compile Include="MotorControls\PinCommand.cs">
-      <SubType>Component</SubType>
+      <SubType>Default</SubType>
     </Compile>
     <Compile Include="MotorControls\PinCommandCollection.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -100,7 +310,7 @@
     <Compile Include="Properties\Galahad.Version.cs" />
     <Compile Include="Properties\UWPSettings.cs" />
     <Compile Include="Runtime\Engine.cs">
-      <SubType>Component</SubType>
+      <SubType>Default</SubType>
     </Compile>
     <Compile Include="Runtime\EngineInitializationEventArgs.cs" />
     <Compile Include="Runtime\EngineInitializationResources.Designer.cs">
@@ -109,20 +319,20 @@
       <DependentUpon>EngineInitializationResources.resx</DependentUpon>
     </Compile>
     <Compile Include="MachineSystem.cs">
-      <SubType>Component</SubType>
+      <SubType>Default</SubType>
     </Compile>
     <Compile Include="SensorAnalyzer.cs">
-      <SubType>Component</SubType>
+      <SubType>Default</SubType>
     </Compile>
     <Compile Include="Speech\Extension.cs" />
     <Compile Include="Speech\SpeechModule.cs">
-      <SubType>Component</SubType>
+      <SubType>Default</SubType>
     </Compile>
     <Compile Include="Speech\SpeechRecognition.cs">
-      <SubType>Component</SubType>
+      <SubType>Default</SubType>
     </Compile>
     <Compile Include="Speech\TextToSpeech.cs">
-      <SubType>Component</SubType>
+      <SubType>Default</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>

@@ -34,23 +34,26 @@ namespace Galahad.Robotics
                 _debugger = debugger;
                 this.Debugger = _debugger;
 
-                // Initialize Log File
-                Assembly thisAsm = typeof(Engine).GetTypeInfo().Assembly;
-
-                System.Threading.Tasks.Task.Run(async () =>
+                if (!_debugger.FileLogger.IsLogging)
                 {
-                    try
-                    {
-                        StorageFile logFile = await thisAsm.GetStorageFile(ApplicationData.Current.LocalFolder, "Galahad.log");
+                    // Initialize Log File
+                    Assembly thisAsm = typeof(Engine).GetTypeInfo().Assembly;
 
-                        _debugger.FileLogger.StartLogging(logFile.Path, System.IO.FileMode.Append);
-                    }
-                    catch (Exception ex)
+                    System.Threading.Tasks.Task.Run(async () =>
                     {
-                        System.Diagnostics.Debug.WriteLine(ex.Message);
-                        throw;
-                    }
-                });
+                        try
+                        {
+                            StorageFile logFile = await thisAsm.GetStorageFile(ApplicationData.Current.LocalFolder, "Galahad.log");
+
+                            _debugger.FileLogger.StartLogging(logFile.Path, System.IO.FileMode.Append);
+                        }
+                        catch (Exception ex)
+                        {
+                            System.Diagnostics.Debug.WriteLine(ex.Message);
+                            throw;
+                        }
+                    });
+                }
 
                 debugger = null;
             }
@@ -71,7 +74,7 @@ namespace Galahad.Robotics
             // Notify UI
 
         }
-   
+
         protected override void Dispose(bool disposing)
         {
             _debugger.FileLogger.StopLogging();
