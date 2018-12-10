@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,13 +11,14 @@ namespace Galahad
     using Galatea;
     using Galatea.Runtime;
     using Galatea.Runtime.Services;
-    using Gala.Data.Configuration;
+    using Properties;
 
-    partial class App
+    partial class App : IProvider
     {
         const string APPLICATION_TITLE = "Galahad";
 
         // Galahad
+        static App _current;
         static Galahad.Robotics.Debugger _debugger;
         static Galahad.Robotics.Engine _engine = null;
         static UWPSettings _settings = null;
@@ -26,11 +28,22 @@ namespace Galahad
             [System.Diagnostics.DebuggerStepThrough]
             get { return _engine; }
         }
-        internal static UWPSettings Settings
+        internal static UWPSettings UWPSettings
         {
             [System.Diagnostics.DebuggerStepThrough]
             get { return _settings; }
         }
+
+        public string ProviderID => "Galahad.exe";
+        public string ProviderName => "Galahad Application";
+        public ISite Site { get; set; }
+        public void Dispose()
+        {
+            ShutdownEngine();
+            Disposed?.Invoke(null, null);
+        }
+
+        public event EventHandler Disposed;
 
         internal static async Task<IRuntimeEngine> CreateEngine(IEngineInitializer initializer)
         {
@@ -43,7 +56,7 @@ namespace Galahad
             }
             catch (Exception ex)
             {
-                _debugger.ThrowSystemException(ex);
+                _debugger.ThrowSystemException(ex, _current);
                 throw;
             }
 
@@ -73,13 +86,13 @@ namespace Galahad
                 Galatea.TeaException teaException = exception as Galatea.TeaException;
                 if (teaException != null)
                 {
-                    _engine.Debugger.HandleTeaException(teaException, false);
+                    _engine.Debugger.HandleTeaException(teaException, _current, false);
                     msg = _engine.Debugger.ErrorMessage;
                     msg = "##ERROR## > " + _engine.Debugger.ErrorMessage;   // TODO: use resource
                 }
                 else
                 {
-                    _engine.Debugger.ThrowSystemException(exception);
+                    _engine.Debugger.ThrowSystemException(exception, _current);
                     msg = "##UNEXPECTED ERROR## > " + _engine.Debugger.ErrorMessage;    // TODO: use resource
                 }
 
