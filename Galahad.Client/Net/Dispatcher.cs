@@ -22,14 +22,14 @@ namespace Galahad.Client.Net
             {
                 var result = Task.Run(async () => 
                 {
-                    using (HttpResponseMessage response = await client.SendAsync(request))
+                    using (HttpResponseMessage response = await client.SendAsync(request).ConfigureAwait(false))
                     {
                         if (response.StatusCode != System.Net.HttpStatusCode.OK)
                         {
                             SendErrorResponse(response);
                         }
 
-                        return await response.Content.ReadAsStringAsync();
+                        return await response.Content.ReadAsStringAsync().ConfigureAwait(false);
                     }
                 });
 
@@ -37,10 +37,44 @@ namespace Galahad.Client.Net
             }
         }
 
+
+        #region IDisposable Support
+        private bool disposedValue = false; // To detect redundant calls
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!disposedValue)
+            {
+                if (disposing)
+                {
+                    // dispose managed state (managed objects).
+                    client.Dispose();
+                }
+
+                // TODO: free unmanaged resources (unmanaged objects) and override a finalizer below.
+                // TODO: set large fields to null.
+
+                disposedValue = true;
+            }
+        }
+
+        // TODO: override a finalizer only if Dispose(bool disposing) above has code to free unmanaged resources.
+        // ~Dispatcher() {
+        //   // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
+        //   Dispose(false);
+        // }
+
+        // This code added to correctly implement the disposable pattern.
         public void Dispose()
         {
-            client.Dispose();
+            // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
+            Dispose(true);
+
+            // uncomment the following line if the finalizer is overridden above.
+            GC.SuppressFinalize(this);
         }
+        #endregion
+
 
         public bool CameraOn
         {
@@ -52,7 +86,7 @@ namespace Galahad.Client.Net
             {
                 Task.Run(async () =>
                 {
-                    var cmd = await PutNetCommand("CameraOn", value);
+                    var cmd = await PutNetCommand(nameof(CameraOn), value).ConfigureAwait(false);
                     cmd.Dispose();
 
                     _cameraOn = value;
@@ -70,7 +104,7 @@ namespace Galahad.Client.Net
             {
                 Task.Run(async () =>
                 {
-                    var cmd = await PutNetCommand("MicrophoneOn", value);
+                    var cmd = await PutNetCommand(nameof(MicrophoneOn), value).ConfigureAwait(false);
                     cmd.Dispose();
 
                     _microphoneOn = value;
@@ -82,7 +116,7 @@ namespace Galahad.Client.Net
         {
             Task.Run(async () =>
             {
-                var cmd = await PutNetCommand("SetPinValue", new[] { pinNumber, value });
+                var cmd = await PutNetCommand("SetPinValue", new[] { pinNumber, value }).ConfigureAwait(false);
                 cmd.Dispose();
             });
         }
@@ -97,14 +131,14 @@ namespace Galahad.Client.Net
 
                 using (HttpResponseMessage response = await GetNetCommand("GetResponse", parameters))
                 {
-                    return await response.Content.ReadAsStringAsync();
+                    return await response.Content.ReadAsStringAsync().ConfigureAwait(false);
                 }
             });
 
             return result.Result;
         }
 
-        private async void Log(DebuggerLogLevel level, string message)
+        private async static void Log(DebuggerLogLevel level, string message)
         {
             if(level >= MainPage.Settings.DebuggerLogLevel)
             {
@@ -114,7 +148,7 @@ namespace Galahad.Client.Net
                     System.DateTime.Today, System.DateTime.Now,
                     System.DateTime.Now.Millisecond, message);
 
-                await MainPage.Current.SendResponse(sOutput);
+                await MainPage.Current.SendResponse(sOutput).ConfigureAwait(false);
             }
         }
 
@@ -128,7 +162,7 @@ namespace Galahad.Client.Net
                     content.Headers.ContentLength = contentString.Length;
                     request.Content = content;
 
-                    HttpResponseMessage response = await client.SendAsync(request);
+                    HttpResponseMessage response = await client.SendAsync(request).ConfigureAwait(false);
 
                     if (response.StatusCode != System.Net.HttpStatusCode.OK)
                     {
@@ -149,7 +183,7 @@ namespace Galahad.Client.Net
                 using (HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Put, @"/NetCommands/"))
                 {
                     request.Content = content;
-                    HttpResponseMessage response = await client.SendAsync(request);
+                    HttpResponseMessage response = await client.SendAsync(request).ConfigureAwait(false);
 
                     if (response.StatusCode == System.Net.HttpStatusCode.OK)
                     {
@@ -185,20 +219,20 @@ namespace Galahad.Client.Net
         }
          */
 
-        private void SendErrorResponse(HttpResponseMessage response)  // TODO:  Add friendly(ier) message before error
+        private static void SendErrorResponse(HttpResponseMessage response)  // TODO:  Add friendly(ier) message before error
         {
             string message, stackTrace;
 
             // Request failed
             Task.Run(async () =>
             {
-                string msg = await response.Content.ReadAsStringAsync();
+                string msg = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
                 dynamic errorData = Newtonsoft.Json.JsonConvert.DeserializeObject<ExpandoObject>(msg);
                 message = errorData.Message;
                 stackTrace = errorData.StackTrace;
 
-                await MainPage.Current.SendResponse(message);
-                await MainPage.Current.SendResponse(stackTrace);
+                await MainPage.Current.SendResponse(message).ConfigureAwait(false);
+                await MainPage.Current.SendResponse(stackTrace).ConfigureAwait(false);
             });
         }
 

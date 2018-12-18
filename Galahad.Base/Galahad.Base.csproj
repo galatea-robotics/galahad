@@ -85,6 +85,8 @@
     </Compile>
     <Compile Include="API\INetCommands.cs" />
     <Compile Include="API\TypeParser.cs" />
+    <Compile Include="Assembly.cs" />
+    <Compile Include="Diagnostics\DebuggerLogLevelExtension.cs" />
     <Compile Include="Extension.cs" />
     <Compile Include="UI\BasePage.xaml.cs">
       <DependentUpon>BasePage.xaml</DependentUpon>

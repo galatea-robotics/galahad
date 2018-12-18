@@ -11,8 +11,8 @@
     <AssemblyName>Galahad.Client</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
-    <TargetPlatformVersion>10.0.14393.0</TargetPlatformVersion>
-    <TargetPlatformMinVersion>10.0.10240.0</TargetPlatformMinVersion>
+    <TargetPlatformVersion>10.0.17134.0</TargetPlatformVersion>
+    <TargetPlatformMinVersion>10.0.16299.0</TargetPlatformMinVersion>
     <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -20,10 +20,12 @@
     <AppxAutoIncrementPackageRevision>False</AppxAutoIncrementPackageRevision>
     <AppxBundle>Always</AppxBundle>
     <AppxBundlePlatforms>x86|arm</AppxBundlePlatforms>
+    <RuntimeIdentifiers>win10-arm;win10-arm-aot;win10-x86;win10-x86-aot;win10-x64;win10-x64-aot</RuntimeIdentifiers>
+    <PackageCertificateThumbprint>4570CBE9198AB981DD399BDAA7F3D26F3E303712</PackageCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <DebugSymbols>true</DebugSymbols>
-    <OutputPath>..\bin\Galahad.Client\x86\</OutputPath>
+    <OutputPath>..\bin\Galahad.Client\x86\Debug\</OutputPath>
     <DefineConstants>TRACE;DEBUG;CLIENT;NETFX_CORE;WINDOWS_UWP;CODE_ANALYSIS</DefineConstants>
     <NoWarn>;2008</NoWarn>
     <DebugType>full</DebugType>
@@ -75,6 +77,9 @@
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
     <Content Include="..\..\Local Settings\Galahad.Client.Config.json">
       <Link>Properties\Galahad.Client.Config.json</Link>
+    </Content>
+    <Content Include="..\Galahad\Assets\Square44x44Logo.scale-100.png">
+      <Link>Assets\Square44x44Logo.scale-100.png</Link>
     </Content>
     <Content Include="..\Galahad\Assets\Square44x44Logo.scale-100_altform-unplated.png">
       <Link>Assets\Square44x44Logo.scale-100_altform-unplated.png</Link>
@@ -138,17 +143,9 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Gala.Data.Config\Gala.Data.Config.csproj">
-      <Project>{d89d2d82-4ff1-42e6-87f8-d7d353204150}</Project>
-      <Name>Gala.Data.Config</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Galahad.Base\Galahad.Base.csproj">
       <Project>{1a7d25f4-715b-472b-9c12-a0fcb2e51550}</Project>
       <Name>Galahad.Base</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Galatea.ComponentModel\_NETStandard\Galatea.ComponentModel.csproj">
-      <Project>{cf7fd784-4522-4fd4-acca-ec36850e3555}</Project>
-      <Name>Galatea.ComponentModel</Name>
     </ProjectReference>
     <ProjectReference Include="..\Galatea\_NETStandard\Galatea.Core.csproj">
       <Project>{ea2b3b64-ef42-4e8f-b47a-1bb76969a415}</Project>
@@ -161,6 +158,21 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>ChatbotResources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers">
+      <Version>2.6.2</Version>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
+      <Version>6.0.1</Version>
+    </PackageReference>
+    <PackageReference Include="Newtonsoft.Json">
+      <Version>10.0.3</Version>
+    </PackageReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

@@ -13,7 +13,7 @@ namespace Galahad.Client
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class MainPage : Galahad.UI.BasePage, IDisposable
+    public sealed partial class MainPage : Galahad.UI.BasePage
     {
         private readonly static ClientSettings settings = ClientSettings.Load().Result;
         private readonly Dispatcher dispatcher;
@@ -21,18 +21,17 @@ namespace Galahad.Client
 
         public MainPage() : base()
         {
-            startProcessesOnLoad = false;
+            StartProcessesOnLoad = false;
             dispatcher = new Dispatcher(settings.IpAddress, settings.Port);
             responderName = dispatcher.GetResponderName();
-                
+
             _current = this;
         }
 
         internal static ClientSettings Settings { get { return settings; } }
-        protected override string UserName
-        {
-            get { return settings.UserName; }
-        }
+
+        protected override string UserName => settings.UserName;
+        public override string ProviderName => "Galahad Client for Windows";
 
         protected override void CameraOff()
         {
@@ -47,12 +46,12 @@ namespace Galahad.Client
         {
             string result = dispatcher.GetResponse(userName, inputText);
 
-            string msg = string.Format(CultureInfo.CurrentCulture, ChatbotResources.ChatBotMessageFormat,
-                responderName.ToUpper(), result);
+            string msg = string.Format(CultureInfo.CurrentCulture, ChatbotResources.ChatbotMessageFormat,
+                responderName.ToUpper(CultureInfo.CurrentCulture), result);
 
             Task.Run(async () =>
             {
-                await SendResponse(msg);
+                await SendResponse(msg).ConfigureAwait(false);
             });
 
             return result;

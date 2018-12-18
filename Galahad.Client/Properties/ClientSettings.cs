@@ -7,7 +7,7 @@ using Newtonsoft.Json;
 
 namespace Galahad.Client.Properties
 {
-    using Gala.Data.Configuration;
+    //using Gala.Data.Configuration;
 
     internal sealed class ClientSettings
     {
@@ -18,7 +18,7 @@ namespace Galahad.Client.Properties
         public static async Task<ClientSettings> Load(string path = @"Properties\Galahad.Client.Config.json")
         {
             Assembly configAsm = typeof(ClientSettings).GetTypeInfo().Assembly;
-            StorageFile file = await configAsm.GetStorageFile(ApplicationData.Current.LocalFolder, path);
+            StorageFile file = await configAsm.GetStorageFile(ApplicationData.Current.LocalFolder, path).ConfigureAwait(false);
 
             string data = null;
             ClientSettings result = null;

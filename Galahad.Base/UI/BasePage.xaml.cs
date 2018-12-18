@@ -19,12 +19,12 @@ namespace Galahad.UI
     [CLSCompliant(false)]
     public abstract partial class BasePage : Page, IDisposable, Galatea.IProvider
     {
-        private bool startProcessesOnLoad = true;
-
         protected BasePage()
         {
             this.InitializeComponent();
         }
+
+        protected bool StartProcessesOnLoad { get; set; } = true;
 
         protected virtual void PageLoaded(object sender, RoutedEventArgs e)
         {
@@ -55,7 +55,7 @@ namespace Galahad.UI
             cameraOnOff.Checked += CameraOnOff_Checked;
             cameraOnOff.Unchecked += CameraOnOff_Unchecked;
 
-            if (startProcessesOnLoad) CameraOn();
+            if (StartProcessesOnLoad) CameraOn();
         }
 
         protected abstract void CameraOn();
@@ -175,7 +175,7 @@ namespace Galahad.UI
             microphoneOnOff.Checked += MicrophoneOnOff_Checked;
             microphoneOnOff.Unchecked += MicrophoneOnOff_Unchecked;
 
-            if (startProcessesOnLoad) MicrophoneOn();
+            if (StartProcessesOnLoad) MicrophoneOn();
         }
 
         protected abstract void MicrophoneOn();

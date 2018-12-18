@@ -290,12 +290,10 @@
       <Link>Chatbots\Alice.cs</Link>
       <SubType>Default</SubType>
     </Compile>
-    <Compile Include="Assembly.cs" />
     <Compile Include="Chatbots\ChatbotManager.cs" />
     <Compile Include="Diagnostics\Debugger.cs">
       <SubType>Default</SubType>
     </Compile>
-    <Compile Include="Diagnostics\DebuggerLogLevelExtension.cs" />
     <Compile Include="MotorControls\MotorCommand.cs">
       <SubType>Default</SubType>
     </Compile>
@@ -346,6 +344,10 @@
     <ProjectReference Include="..\Gala.Data\_NETStandard\Gala.Data.csproj">
       <Project>{07ce2a22-d0c9-472a-aedb-a80762cef39e}</Project>
       <Name>Gala.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Galahad.Base\Galahad.Base.csproj">
+      <Project>{1a7d25f4-715b-472b-9c12-a0fcb2e51550}</Project>
+      <Name>Galahad.Base</Name>
     </ProjectReference>
     <ProjectReference Include="..\Galatea.AI.Abstract\_NETStandard\Galatea.AI.Abstract.csproj">
       <Project>{356f1914-4f7f-44d8-8825-63ba82196446}</Project>
