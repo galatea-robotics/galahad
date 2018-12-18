@@ -56,7 +56,8 @@ namespace Galahad
             //App.FinalizeEngine();
         }
 
-        private void redButton_Click(object sender, RoutedEventArgs e)
+#pragma warning disable CA1801 // Review unused parameters
+        private void RedButton_Click(object sender, RoutedEventArgs e)
         {
             if (redPin == null) return;
 
@@ -72,7 +73,7 @@ namespace Galahad
             }
         }
 
-        private async void greenButton_Click(object sender, RoutedEventArgs e)
+        private async void GreenButton_Click(object sender, RoutedEventArgs e)
         {
             if (greenPin == null) return;
 
@@ -80,13 +81,13 @@ namespace Galahad
             while (green_state == true)
             {
                 greenPin.Write(GpioPinValue.High);
-                await Task.Delay(500);
+                await Task.Delay(500).ConfigureAwait(false);
                 greenPin.Write(GpioPinValue.Low); ;
-                await Task.Delay(500);
+                await Task.Delay(500).ConfigureAwait(false);
             }
         }
 
-        private void startButton_Click(object sender, RoutedEventArgs e)
+        private void StartButton_Click(object sender, RoutedEventArgs e)
         {
             //App.StartEngine();
 
@@ -94,12 +95,13 @@ namespace Galahad
             startButton.IsEnabled = false;
         }
 
-        private void stopButton_Click(object sender, RoutedEventArgs e)
+        private void StopButton_Click(object sender, RoutedEventArgs e)
         {
             //App.ShutdownEngine();
 
             startButton.IsEnabled = true;
             stopButton.IsEnabled = false;
         }
+#pragma warning restore CA1801 // Review unused parameters
     }
 }

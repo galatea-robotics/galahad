@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" IgnorableNamespaces="uap mp">
-  <Identity Name="GeneralApplications.Galahad.Robotics" Publisher="CN=L. Scott Hudson" Version="1.0.0.0" />
+  <Identity Name="GeneralApplications.Galahad.Robotics" Publisher="CN=General Applications" Version="1.0.1.0" />
   <mp:PhoneIdentity PhoneProductId="562fffdc-5095-4e25-90b1-82af6ebca420" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
     <DisplayName>Galahad</DisplayName>

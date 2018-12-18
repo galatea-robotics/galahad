@@ -9,13 +9,13 @@ namespace Galahad.Robotics.MotorControls
     {
         internal MotorCommand (string commandName, Action<object> exec)
         {
-            _commandName = commandName;
-            _exec = exec;
+            CommandName = commandName;
+            Exec = exec;
         }
 
-        public string CommandName { get { return _commandName; } }
+        public string CommandName { get; }
 
-        protected internal Action<object> Exec { get { return _exec; } }
+        protected internal Action<object> Exec { get; }
 
         void IMotorCommand.Execute(params object[] args)
         {
@@ -24,11 +24,7 @@ namespace Galahad.Robotics.MotorControls
 
         protected virtual void Execute(params object[] args)
         {
-            _exec(args[0]);
+            Exec(args[0]);
         }
-
-
-        private string _commandName;
-        private Action<object> _exec;
     }
 }

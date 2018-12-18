@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Net.Http;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -38,13 +39,13 @@ namespace Galahad.Net
             int contentLength = -1;
 
             // Parse InputStream as string
-            string requestString = await ToString(input);
+            string requestString = await ToString(input).ConfigureAwait(false);
 
             using (System.IO.TextReader reader = new System.IO.StringReader(requestString))
             {
                 try
                 {
-                    string line = await reader.ReadLineAsync();
+                    string line = await reader.ReadLineAsync().ConfigureAwait(false);
                     string[] info = line.Split(' ');
 
                     // Get Fields
@@ -53,7 +54,7 @@ namespace Galahad.Net
                     version = Version.Parse(info[2].Split('/')[1]);
 
                     // Get Properties
-                    line = await reader.ReadLineAsync();
+                    line = await reader.ReadLineAsync().ConfigureAwait(false);
                     while (!string.IsNullOrEmpty(line))
                     {
                         info = line.Split(':');
@@ -65,24 +66,24 @@ namespace Galahad.Net
                         }
                         else if (info[0] == "Content-Length")
                         {
-                            contentLength = int.Parse(info[1].Trim());
+                            contentLength = int.Parse(info[1].Trim(), CultureInfo.CurrentCulture);
                         }
 
-                        line = await reader.ReadLineAsync();
+                        line = await reader.ReadLineAsync().ConfigureAwait(false);
                     }
 
                     // Get Content
                     if (contentLength > 0)
                     {
                         char[] buffer = new char[contentLength];
-                        await reader.ReadAsync(buffer, 0, contentLength);
+                        await reader.ReadAsync(buffer, 0, contentLength).ConfigureAwait(false);
 
                         content = new StringContent(new string(buffer));
                         content.Headers.ContentLength = contentLength;
                     }
                     else
                     {
-                        string contentData = await reader.ReadToEndAsync();
+                        string contentData = await reader.ReadToEndAsync().ConfigureAwait(false);
                         content = new StringContent(contentData);
                     }
 

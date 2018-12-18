@@ -28,7 +28,7 @@ namespace Galahad
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class StartupScreen : Page, IEngineInitializer
+    public sealed partial class StartupScreen : Page, IEngineInitializer, IDisposable
     {
         private SplashScreen splash;    // Variable to hold the splash screen object.
 
@@ -39,6 +39,7 @@ namespace Galahad
         private Galahad.Net.HttpService webService;
 
         // Define methods and constructor
+#pragma warning disable CA1801 // Review unused parameters
         public StartupScreen(SplashScreen splashScreen, bool loadState)
         {
             InitializeComponent();
@@ -68,6 +69,7 @@ namespace Galahad
             // Create a Frame to act as the navigation context
             rootFrame = new Frame();
         }
+#pragma warning restore CA1801 // Review unused parameters
 
         #region UI
 
@@ -135,7 +137,7 @@ namespace Galahad
             {
                 try
                 {
-                    Galatea.Runtime.IRuntimeEngine runtimeEngine = await App.CreateEngine(this);
+                    Galatea.Runtime.IRuntimeEngine runtimeEngine = await App.CreateEngine(this).ConfigureAwait(false);
 
                     // Start Engine
                     runtimeEngine.Startup();
@@ -144,7 +146,7 @@ namespace Galahad
                 }
                 catch (Exception ex)
                 {
-                    await HandleExceptionAsync(ex);
+                    await HandleExceptionAsync(ex).ConfigureAwait(false);
                     // TODO: Exit thread on error
                 }
             });
@@ -176,7 +178,7 @@ namespace Galahad
                 }
                 catch (Exception ex)
                 {
-                    await HandleExceptionAsync(ex);
+                    await HandleExceptionAsync(ex).ConfigureAwait(false);
                 }
             });
 
@@ -196,8 +198,12 @@ namespace Galahad
                 {
                     MainPage newMainPage = new MainPage();
 
-                    rootFrame = new Frame();
-                    rootFrame.Content = newMainPage; Window.Current.Content = rootFrame;
+                    rootFrame = new Frame
+                    {
+                        Content = newMainPage
+                    };
+
+                    Window.Current.Content = rootFrame;
 
                     webService.NetCommands = newMainPage;
                 }
@@ -231,7 +237,8 @@ namespace Galahad
             errorHandlerContainer.Visibility = Visibility.Visible;
         }
 
-        private void retryButton_Click(object sender, RoutedEventArgs e)
+#pragma warning disable CA1801 // Review unused parameters
+        private void RetryButton_Click(object sender, RoutedEventArgs e)
         {
             PositionWidgets();
 
@@ -239,7 +246,7 @@ namespace Galahad
             RuntimeStartup();
         }
 
-        private void quitButton_Click(object sender, RoutedEventArgs e)
+        private void QuitButton_Click(object sender, RoutedEventArgs e)
         {
             App.ShutdownEngine();
             Application.Current.Exit();
@@ -253,6 +260,7 @@ namespace Galahad
                 Application.Current.Exit();     // User closed the form before startup was complete.
             }
         }
+#pragma warning restore CA1801 // Review unused parameters
 
         void RestoreStateAsync(bool loadState)
         {
@@ -265,5 +273,41 @@ namespace Galahad
         internal static bool Starting { get { return _starting; } }
 
         private static bool _starting;
+
+        #region IDisposable Support
+        private bool disposedValue = false; // To detect redundant calls
+
+        void Dispose(bool disposing)
+        {
+            if (!disposedValue)
+            {
+                if (disposing)
+                {
+                    // dispose managed state (managed objects).
+                    webService.Dispose();
+                }
+
+                // TODO: free unmanaged resources (unmanaged objects) and override a finalizer below.
+                // TODO: set large fields to null.
+
+                disposedValue = true;
+            }
+        }
+
+        // TODO: override a finalizer only if Dispose(bool disposing) above has code to free unmanaged resources.
+        // ~StartupScreen() {
+        //   // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
+        //   Dispose(false);
+        // }
+
+        // This code added to correctly implement the disposable pattern.
+        public void Dispose()
+        {
+            // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
+            Dispose(true);
+            // TODO: uncomment the following line if the finalizer is overridden above.
+            // GC.SuppressFinalize(this);
+        }
+        #endregion
     }
 }

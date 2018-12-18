@@ -35,6 +35,9 @@ namespace Galahad.Robotics
         /// <param name="ex">
         /// A run-time <see cref="TeaException"/>.
         /// </param>
+        /// <param name="provider">
+        /// The runtime component where the exception occurred.
+        /// </param>
         /// <param name="throwException">
         /// A value indicating if the Exception should remain unhandled after
         /// processing by the <see cref="Debugger"/> instance.
@@ -59,6 +62,9 @@ namespace Galahad.Robotics
         /// </summary>
         /// <param name="ex">
         /// A run-time <see cref="System.Exception"/>.
+        /// </param>
+        /// <param name="provider">
+        /// The runtime component where the exception occurred.
         /// </param>
         public override void ThrowSystemException(Exception ex, IProvider provider)
         {

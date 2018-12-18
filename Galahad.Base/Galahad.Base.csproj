@@ -69,7 +69,8 @@
     <None Include="..\Galahad.Robotics\Galahad.pfx">
       <Link>Galahad.pfx</Link>
     </None>
-  </ItemGroup>   
+    <None Include="project.json" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="..\..\Local Settings\UWPConfig.json">
       <Link>Properties\UWPConfig.json</Link>
@@ -122,6 +123,13 @@
   <PropertyGroup>
     <AssemblyOriginatorKeyFile>..\Galahad.Robotics\Galahad.pfx</AssemblyOriginatorKeyFile>
   </PropertyGroup>
+  <ItemGroup Condition="'$(Configuration)|$(Platform)' == 'Analysis|x86'">
+    <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers">
+      <Version>2.6.2</Version>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+  </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.0.1</Version>
@@ -135,8 +143,9 @@
     <NoStdLib>true</NoStdLib>
     <PlatformTarget>x86</PlatformTarget>
     <UseVSHostingProcess>false</UseVSHostingProcess>
-    <CodeAnalysisRuleSet>..\Galatea.UWP.ruleset</CodeAnalysisRuleSet>
-    <RunCodeAnalysis>true</RunCodeAnalysis>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+    <CodeAnalysisIgnoreGeneratedCode>false</CodeAnalysisIgnoreGeneratedCode>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Analysis|ARM'">
     <DebugSymbols>true</DebugSymbols>
@@ -144,10 +153,10 @@
     <DefineConstants>TRACE;DEBUG;NETFX_CORE;WINDOWS_UWP</DefineConstants>
     <NoWarn>;2008</NoWarn>
     <NoStdLib>true</NoStdLib>
-    <PlatformTarget>x86</PlatformTarget>
+    <PlatformTarget>ARM</PlatformTarget>
     <UseVSHostingProcess>false</UseVSHostingProcess>
-    <CodeAnalysisRuleSet>..\Galatea.UWP.ruleset</CodeAnalysisRuleSet>
-    <RunCodeAnalysis>true</RunCodeAnalysis>
+    <CodeAnalysisRuleSet>..\AllRules.ruleset</CodeAnalysisRuleSet>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

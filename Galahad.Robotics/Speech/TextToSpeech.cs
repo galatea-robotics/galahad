@@ -71,22 +71,22 @@ namespace Galahad.Robotics.Speech
             get { return mediaElement; }
             set
             {
-                if (mediaElement != null) mediaElement.MediaEnded -= mediaElement_MediaEnded;
+                if (mediaElement != null) mediaElement.MediaEnded -= MediaElement_MediaEnded;
 
                 mediaElement = value;
-                mediaElement.MediaEnded += mediaElement_MediaEnded;
+                mediaElement.MediaEnded += MediaElement_MediaEnded;
             }
         }
-        protected void mediaElement_MediaEnded(object sender, RoutedEventArgs e)
+        protected void MediaElement_MediaEnded(object sender, RoutedEventArgs e)
         {
             _isSpeaking = false;
-            if (SpeechEnded != null) SpeechEnded(this, EventArgs.Empty);
+            SpeechEnded?.Invoke(this, EventArgs.Empty);
         }
 
         protected override void Dispose(bool disposing)
         {
             _speechSynthesizer.Dispose();
-            mediaElement.MediaEnded -= mediaElement_MediaEnded;
+            mediaElement.MediaEnded -= MediaElement_MediaEnded;
 
             base.Dispose(disposing);
         }
@@ -100,9 +100,7 @@ namespace Galahad.Robotics.Speech
             get { return _current; }
             set
             {
-                if (value == null) throw new Galatea.TeaArgumentNullException("value");
-
-                _current = value;
+                _current = value ?? throw new Galatea.TeaArgumentNullException(nameof(value));
                 _speechSynthesizer.Voice = (VoiceInformation)_current.VoiceObject;
             }
         }
@@ -113,7 +111,7 @@ namespace Galahad.Robotics.Speech
             try
             {
                 // Correct Punctuation
-                response = response.Replace(".", ". ");
+                response = response.Replace(".", ". ", StringComparison.CurrentCulture);
 
                 // Initialize a new instance of the SpeechSynthesizer.
                 _isSpeaking = true;
@@ -137,7 +135,7 @@ namespace Galahad.Robotics.Speech
             if (_speechModule.LanguageModel.AI.Engine.Debugger.LogLevel == Galatea.Diagnostics.DebuggerLogLevel.Diagnostic)
             {
                 _speechModule.LanguageModel.AI.Engine.Debugger.Log(Galatea.Diagnostics.DebuggerLogLevel.Diagnostic,
-                    "TextToSpeech[" + sender.ProviderID + "]: " + response);
+                    "TextToSpeech[" + sender.ProviderId + "]: " + response);
             }
         }
 

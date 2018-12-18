@@ -15,11 +15,8 @@ namespace Galahad.Robotics
     {
         void IFoundation.Initialize(IEngine engine)
         {
-            if (engine == null)
-                throw new TeaArgumentNullException("engine");
-
             // Initialize
-            _engine = engine;
+            _engine = engine ?? throw new TeaArgumentNullException(nameof(engine));
             _engine.Add(this);
 
             _isInitialized = true;

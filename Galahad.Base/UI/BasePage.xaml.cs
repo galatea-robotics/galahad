@@ -19,7 +19,7 @@ namespace Galahad.UI
     [CLSCompliant(false)]
     public abstract partial class BasePage : Page, IDisposable, Galatea.IProvider
     {
-        protected bool startProcessesOnLoad = true;
+        private bool startProcessesOnLoad = true;
 
         protected BasePage()
         {
@@ -46,13 +46,13 @@ namespace Galahad.UI
 
         protected abstract string UserName { get; }
 
-        public string ProviderID { get { return this.GetType().FullName; } }
+        public string ProviderId { get { return this.GetType().FullName; } }
         public abstract string ProviderName { get; }
 
         #region Camera
         protected virtual void InitializeVideo()
         {
-            cameraOnOff.Checked += cameraOnOff_Checked;
+            cameraOnOff.Checked += CameraOnOff_Checked;
             cameraOnOff.Unchecked += CameraOnOff_Unchecked;
 
             if (startProcessesOnLoad) CameraOn();
@@ -62,7 +62,7 @@ namespace Galahad.UI
 
         protected abstract void CameraOff();
 
-        private void cameraOnOff_Checked(object sender, RoutedEventArgs e)
+        private void CameraOnOff_Checked(object sender, RoutedEventArgs e)
         {
             CameraOn();
         }
@@ -92,8 +92,8 @@ namespace Galahad.UI
             // Get Response
             if (!string.IsNullOrEmpty(inputText))
             {
-                string msg = string.Format(CultureInfo.CurrentCulture, ChatbotResources.ChatBotMessageFormat, this.UserName, inputText);
-                await SendResponse(msg);
+                string msg = string.Format(CultureInfo.CurrentCulture, ChatbotResources.ChatbotMessageFormat, this.UserName, inputText);
+                await SendResponse(msg).ConfigureAwait(false);
 
                 // Save input to short term UI History
                 history.Add(inputText);
@@ -108,7 +108,8 @@ namespace Galahad.UI
         }
         protected abstract string GetResponse(string inputText, string userName);
 
-        private void input_KeyDown(object sender, KeyRoutedEventArgs e)
+#pragma warning disable CA1801 // Review unused parameters
+        private void Input_KeyDown(object sender, KeyRoutedEventArgs e)
         {
             if(e.Key == Windows.System.VirtualKey.Enter)
             {
@@ -152,14 +153,15 @@ namespace Galahad.UI
             input.Text = history[historyLine];
             input.Select(input.Text.Length, 0);
         }
-        private void sendButton_Click(object sender, RoutedEventArgs e)
+        private void SendButton_Click(object sender, RoutedEventArgs e)
         {
             GetResponse();
         }
-        private void sendButton_Tapped(object sender, TappedRoutedEventArgs e)
+        private void SendButton_Tapped(object sender, TappedRoutedEventArgs e)
         {
             GetResponse();
         }
+#pragma warning restore CA1801 // Review unused parameters
 
         private bool responding;
         private List<string> history = new List<string>();
@@ -170,8 +172,8 @@ namespace Galahad.UI
         [System.Diagnostics.DebuggerNonUserCode]
         protected virtual void InitializeMicrophone()
         {
-            microphoneOnOff.Checked += microphoneOnOff_Checked;
-            microphoneOnOff.Unchecked += microphoneOnOff_Unchecked;
+            microphoneOnOff.Checked += MicrophoneOnOff_Checked;
+            microphoneOnOff.Unchecked += MicrophoneOnOff_Unchecked;
 
             if (startProcessesOnLoad) MicrophoneOn();
         }
@@ -179,11 +181,11 @@ namespace Galahad.UI
         protected abstract void MicrophoneOn();
         protected abstract void MicrophoneOff();
 
-        private void microphoneOnOff_Checked(object sender, RoutedEventArgs e)
+        private void MicrophoneOnOff_Checked(object sender, RoutedEventArgs e)
         {
             MicrophoneOn();
         }
-        private void microphoneOnOff_Unchecked(object sender, RoutedEventArgs e)
+        private void MicrophoneOnOff_Unchecked(object sender, RoutedEventArgs e)
         {
             MicrophoneOff();
         }
@@ -243,12 +245,14 @@ namespace Galahad.UI
 
         #endregion
 
-        private void exit_Click(object sender, RoutedEventArgs e)
+#pragma warning disable CA1801 // Review unused parameters
+        private void Exit_Click(object sender, RoutedEventArgs e)
         {
             Application.Current.Exit();
         }
+#pragma warning restore CA1801 // Review unused parameters
 
-        protected internal async Task SendResponse(string message)
+        public async Task SendResponse(string message)
         {
             await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
             {
@@ -276,6 +280,8 @@ namespace Galahad.UI
 
                 disposedValue = true;
             }
+
+            Disposed?.Invoke(this, EventArgs.Empty);
         }
 
         // This code added to correctly implement the disposable pattern.
@@ -284,8 +290,6 @@ namespace Galahad.UI
             // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
             Dispose(true);
             GC.SuppressFinalize(this);
-
-            Disposed?.Invoke(this, EventArgs.Empty);
         }
         #endregion
 

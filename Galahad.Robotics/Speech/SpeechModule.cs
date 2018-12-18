@@ -27,9 +27,7 @@ namespace Galahad.Robotics.Speech
         /// </param>
         public void Initialize(ILanguageAnalyzer languageModel)
         {
-            if (languageModel == null) throw new Galatea.TeaArgumentNullException("languageModel");
-
-            _languageAnalyzer = languageModel;
+            _languageAnalyzer = languageModel ?? throw new Galatea.TeaArgumentNullException(nameof(languageModel));
 
             // Component Model
             languageModel.SpeechModule = this;

@@ -19,8 +19,8 @@
                 <ProgressBar x:Name="progressBar" Height="12" Width="560" VerticalAlignment="Bottom" Canvas.Top="280" Margin="30,4" />
             </StackPanel>
             <StackPanel x:Name="errorHandlerContainer" Height="24" Width="620" Canvas.ZIndex="2" Padding="30,0">
-                <Button x:Name="retryButton" Content="Retry" FontSize="12" Width="80" Height="24" Padding="8,2" HorizontalAlignment="Center" Margin="388,0,92,0" Click="retryButton_Click" Foreground="#FFDAE2EC" />
-                <Button x:Name="quitButton" Content="Quit" FontSize="12" Width="80" Height="24" Padding="8,2" HorizontalAlignment="Right" Margin="0,-24,0,0" Click="quitButton_Click" Foreground="#FFDAE2EC" />
+                <Button x:Name="retryButton" Content="Retry" FontSize="12" Width="80" Height="24" Padding="8,2" HorizontalAlignment="Center" Margin="388,0,92,0" Click="RetryButton_Click" Foreground="#FFDAE2EC" />
+                <Button x:Name="quitButton" Content="Quit" FontSize="12" Width="80" Height="24" Padding="8,2" HorizontalAlignment="Right" Margin="0,-24,0,0" Click="QuitButton_Click" Foreground="#FFDAE2EC" />
             </StackPanel>
         </Canvas>
     </Grid>

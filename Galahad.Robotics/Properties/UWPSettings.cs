@@ -23,7 +23,7 @@ namespace Galahad.Properties
             //https://docs.microsoft.com/en-us/windows/uwp/files/file-access-permissions
 
             Assembly configAsm = typeof(UWPSettings).GetTypeInfo().Assembly;
-            StorageFile file = await configAsm.GetStorageFile(ApplicationData.Current.LocalFolder, _filename);
+            StorageFile file = await configAsm.GetStorageFile(ApplicationData.Current.LocalFolder, _filename).ConfigureAwait(false);
 
             string data = null;
             UWPSettings result = null;
@@ -54,7 +54,7 @@ namespace Galahad.Properties
         public async void Save()
         {
             Assembly configAsm = typeof(UWPSettings).GetTypeInfo().Assembly;
-            StorageFile file = await configAsm.GetStorageFile(ApplicationData.Current.LocalFolder, _filename);
+            StorageFile file = await configAsm.GetStorageFile(ApplicationData.Current.LocalFolder, _filename).ConfigureAwait(false);
 
             string data = JsonConvert.SerializeObject(this);
             System.IO.File.WriteAllText(file.Path, data);

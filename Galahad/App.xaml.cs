@@ -41,7 +41,7 @@ namespace Galahad
         /// <param name="e">Details about the launch request and process.</param>
         protected override void OnLaunched(LaunchActivatedEventArgs e)
         {
-            if (e == null) throw new Galatea.TeaArgumentNullException("e");
+            if (e == null) throw new Galatea.TeaArgumentNullException(nameof(e));
 
 #if DEBUG
             if (System.Diagnostics.Debugger.IsAttached)
@@ -49,16 +49,16 @@ namespace Galahad
                 //this.DebugSettings.EnableFrameRateCounter = true;
             }
 #endif
-            Frame rootFrame = Window.Current.Content as Frame;
-
             // Do not repeat app initialization when the Window already has content,
             // just ensure that the window is active
-            if (rootFrame == null)
+            if (!(Window.Current.Content is Frame rootFrame))
             {
                 // Create a Frame to act as the navigation context and navigate to the first page
-                rootFrame = new Frame();
-                // Set the default language
-                rootFrame.Language = Windows.Globalization.ApplicationLanguages.Languages[0];
+                rootFrame = new Frame
+                {
+                    // Set the default language
+                    Language = Windows.Globalization.ApplicationLanguages.Languages[0]
+                };
 
                 rootFrame.NavigationFailed += OnNavigationFailed;
 

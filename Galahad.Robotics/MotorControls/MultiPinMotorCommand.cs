@@ -9,10 +9,10 @@ namespace Galahad.Robotics.MotorControls
     {
         internal MultiPinMotorCommand(string commandName)
         {
-            _commandName = commandName;
+            CommandName = commandName;
         }
 
-        public string CommandName { get { return _commandName; } }
+        public string CommandName { get; }
 
         void IMotorCommand.Execute(params object[] args)
         {
@@ -24,17 +24,5 @@ namespace Galahad.Robotics.MotorControls
                 action(pin);
             });
         }
-
-        /*
-        void IMotorCommand.Execute(params object[] args)
-        {
-            System.Threading.Tasks.Parallel.ForEach(this, (cmd) =>
-            {
-                cmd.Execute(args);
-            });
-        }
-         */
-
-        private string _commandName;
     }
 }

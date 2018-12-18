@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Dynamic;
+using System.Globalization;
 using System.IO;
 using System.Net.Http;
 using System.Reflection;
@@ -21,10 +22,11 @@ namespace Galahad.Net
                 client.BaseAddress = new Uri("http://localhost:8008");
                 try
                 {
-                    var response = await client.GetAsync(@"/Test/");
-                    var msg = await response.Content.ReadAsStringAsync();
+                    var uri = new Uri(@"/Test/");
+                    var response = await client.GetAsync(uri).ConfigureAwait(false);
+                    var msg = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
 
-                    await MainPage.Current.SendResponse(msg);
+                    await MainPage.Current.SendResponse(msg).ConfigureAwait(false);
                 }
                 catch (Exception ex)
                 {
@@ -56,8 +58,8 @@ namespace Galahad.Net
 
                     using (HttpClient client = new HttpClient { BaseAddress = new Uri("http://localhost:8008") })
                     {
-                        HttpResponseMessage response = await client.SendAsync(request);
-                        var responseContent = await response.Content.ReadAsStringAsync();
+                        HttpResponseMessage response = await client.SendAsync(request).ConfigureAwait(false);
+                        var responseContent = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
 
                         if (response.StatusCode == System.Net.HttpStatusCode.OK)
                         {
@@ -65,7 +67,7 @@ namespace Galahad.Net
                         }
                         else
                         {
-                            await SendErrorResponse(responseContent);
+                            await SendErrorResponse(responseContent).ConfigureAwait(false);
                         }
                     }
                 }
@@ -88,8 +90,8 @@ namespace Galahad.Net
 
                     using (HttpClient client = new HttpClient { BaseAddress = new Uri("http://localhost:8008") })
                     {
-                        HttpResponseMessage response = await client.SendAsync(request);
-                        var responseContent = await response.Content.ReadAsStringAsync();
+                        HttpResponseMessage response = await client.SendAsync(request).ConfigureAwait(false);
+                        var responseContent = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
 
                         if (response.StatusCode == System.Net.HttpStatusCode.OK)
                         {
@@ -101,7 +103,7 @@ namespace Galahad.Net
                         }
                         else
                         {
-                            await SendErrorResponse(responseContent);
+                            await SendErrorResponse(responseContent).ConfigureAwait(false);
                         }
                     }
                 }
@@ -116,22 +118,22 @@ namespace Galahad.Net
             {
                 using (var content = new System.Net.Http.StringContent(contentString))
                 {
-                    content.Headers.Add("Content-Length", contentString.Length.ToString());
+                    content.Headers.Add("Content-Length", contentString.Length.ToString(CultureInfo.CurrentCulture));
 
                     using (HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Put, @"/NetCommands/"))
                     {
                         request.Content = content;
 
-                        HttpResponseMessage response = await client.SendAsync(request);
-                        var responseContent = await response.Content.ReadAsStringAsync();
+                        HttpResponseMessage response = await client.SendAsync(request).ConfigureAwait(false);
+                        var responseContent = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
 
                         if (response.StatusCode == System.Net.HttpStatusCode.OK)
                         {
-                            await MainPage.Current.SendResponse(responseContent);
+                            await MainPage.Current.SendResponse(responseContent).ConfigureAwait(false);
                         }
                         else
                         {
-                            await SendErrorResponse(responseContent);
+                            await SendErrorResponse(responseContent).ConfigureAwait(false);
                         }
                     }
                 }

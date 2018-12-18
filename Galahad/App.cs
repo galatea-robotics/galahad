@@ -15,7 +15,7 @@ namespace Galahad
 
     partial class App : IProvider
     {
-        const string APPLICATION_TITLE = "Galahad";
+        //const string APPLICATION_TITLE = "Galahad";
 
         // Galahad
         static App _current;
@@ -34,7 +34,7 @@ namespace Galahad
             get { return _settings; }
         }
 
-        public string ProviderID => "Galahad.exe";
+        public string ProviderId => "Galahad.exe";
         public string ProviderName => "Galahad Application";
         public ISite Site { get; set; }
         public void Dispose()
@@ -49,7 +49,7 @@ namespace Galahad
         {
             try
             {
-                _settings = await UWPSettings.Load("Properties\\GalahadConfig.json");
+                _settings = await UWPSettings.Load("Properties\\GalahadConfig.json").ConfigureAwait(false);
                 Galatea.Diagnostics.DebuggerLogLevelSettings.Initialize(_settings.DebuggerLogLevel, _settings.DebuggerAlertLevel);
 
                 _debugger = new Galahad.Robotics.Debugger();
@@ -84,8 +84,7 @@ namespace Galahad
         {
             if (_engine != null)
             {
-                Galatea.TeaException teaException = exception as Galatea.TeaException;
-                if (teaException != null)
+                if (exception is TeaException teaException)
                 {
                     _engine.Debugger.HandleTeaException(teaException, _current, false);
                     msg = _engine.Debugger.ErrorMessage;
@@ -117,7 +116,7 @@ namespace Galahad
             // Notify UI 
             try
             {
-                await MainPage.Current.SendResponse(msg);
+                await MainPage.Current.SendResponse(msg).ConfigureAwait(false);
             }
             catch
             {

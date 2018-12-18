@@ -15,25 +15,25 @@ namespace Galahad.Robotics.MotorControls
         public MotorController()
         {
             _current = this;
-            _pinCommands = new PinCommandCollection();
+            PinCommands = new PinCommandCollection();
         }
 
         protected override void Initialize(SensoryMotorSystem machine)
         {
             Task.Run(() =>
             {
-               base.Initialize(machine);
+                base.Initialize(machine);
 
-               GpioController controller = GpioController.GetDefault();
-               PinCommand leftForwardPinCommand = new PinCommand(Engine.Settings.GpioLeftForwardPin, GpioPinDriveMode.Output, controller);
-               PinCommand leftReversePinCommand = new PinCommand(Engine.Settings.GpioLeftReversePin, GpioPinDriveMode.Output, controller);
-               PinCommand rightForwardPinCommand = new PinCommand(Engine.Settings.GpioRightForwardPin, GpioPinDriveMode.Output, controller);
-               PinCommand rightReversePinCommand = new PinCommand(Engine.Settings.GpioRightReversePin, GpioPinDriveMode.Output, controller);
+                GpioController controller = GpioController.GetDefault();
+                PinCommand leftForwardPinCommand = new PinCommand(Engine.Settings.GpioLeftForwardPin, GpioPinDriveMode.Output, controller);
+                PinCommand leftReversePinCommand = new PinCommand(Engine.Settings.GpioLeftReversePin, GpioPinDriveMode.Output, controller);
+                PinCommand rightForwardPinCommand = new PinCommand(Engine.Settings.GpioRightForwardPin, GpioPinDriveMode.Output, controller);
+                PinCommand rightReversePinCommand = new PinCommand(Engine.Settings.GpioRightReversePin, GpioPinDriveMode.Output, controller);
 
-               if (leftForwardPinCommand.GpioPin != null) _pinCommands.Add(leftForwardPinCommand);
-               if (leftReversePinCommand.GpioPin != null) _pinCommands.Add(leftReversePinCommand);
-               if (rightForwardPinCommand.GpioPin != null) _pinCommands.Add(rightForwardPinCommand);
-               if (rightReversePinCommand.GpioPin != null) _pinCommands.Add(rightReversePinCommand);
+                if (leftForwardPinCommand.GpioPin != null) PinCommands.Add(leftForwardPinCommand);
+                if (leftReversePinCommand.GpioPin != null) PinCommands.Add(leftReversePinCommand);
+                if (rightForwardPinCommand.GpioPin != null) PinCommands.Add(rightForwardPinCommand);
+                if (rightReversePinCommand.GpioPin != null) PinCommands.Add(rightReversePinCommand);
 
                 //MotorCommands.MoveForward = new MultiPinMotorCommand
                 //{
@@ -47,22 +47,19 @@ namespace Galahad.Robotics.MotorControls
             throw new NotImplementedException();
         }
 
-        public IMotorCommandCollection MotorCommands { get { return _motorCommands; } }
+        public IMotorCommandCollection MotorCommands { get; }
 
-        public IPinCommandCollection PinCommands { get { return _pinCommands; } }
+        public IPinCommandCollection PinCommands { get; }
 
         protected override void Dispose(bool disposing)
         {
             base.Dispose(disposing);
 
             // Close Gpio Pins
-            _pinCommands.Dispose();
+            PinCommands.Dispose();
         }
 
-        internal static IMotorController Current { get { return _current; } } // TODO:  Step
-
-        private readonly IMotorCommandCollection _motorCommands;
-        private readonly IPinCommandCollection _pinCommands;
+        internal static IMotorController Current { get { return _current; } } // TODO:  Step 
 
         private static IMotorController _current;
     }

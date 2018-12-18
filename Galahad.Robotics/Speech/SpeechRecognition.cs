@@ -19,7 +19,7 @@ namespace Galahad.Robotics.Speech
         /// declines. This should only happen on a Phone device, where speech is enabled for the entire device,
         /// not per-app.
         /// </summary>
-        private static uint HResultPrivacyStatementDeclined = 0x80045509;
+        private const uint HResultPrivacyStatementDeclined = 0x80045509;
 
         /// <summary>
         /// Initialize Speech Recognizer and compile constraints.
@@ -118,7 +118,7 @@ namespace Galahad.Robotics.Speech
                     // If successful, display the recognition result.
                     if (speechRecognitionResult.Status == SpeechRecognitionResultStatus.Success)
                     {
-                        if (speechRecognitionResult.Text != "")
+                        if (string.IsNullOrEmpty(speechRecognitionResult.Text))
                         {
                             ruleId = 0;
                             status = speechRecognitionResult.Status.Convert();
@@ -171,7 +171,7 @@ namespace Galahad.Robotics.Speech
         }
         async void ISpeechRecognition.StopListening()
         {
-            await Task.Run(() => _inactive = true);
+            await Task.Run(() => _inactive = true).ConfigureAwait(false);
         }
 
         bool ISpeechRecognition.Inactive

@@ -12,27 +12,21 @@ namespace Galahad.Robotics.MotorControls
     {
         public MotorCommands()
         {
-            var moveForwardCommand = new MultiPinMotorCommand("MoveForward");
-            moveForwardCommand.Add(MotorController.Current.PinCommands[Engine.Settings.GpioLeftForwardPin], p => p.Write(GpioPinValue.High));
-            moveForwardCommand.Add(MotorController.Current.PinCommands[Engine.Settings.GpioRightForwardPin], p => p.Write(GpioPinValue.High));
-            moveForwardCommand.Add(MotorController.Current.PinCommands[Engine.Settings.GpioLeftReversePin], p => p.Write(GpioPinValue.Low));
-            moveForwardCommand.Add(MotorController.Current.PinCommands[Engine.Settings.GpioRightReversePin], p => p.Write(GpioPinValue.Low));
-            this.Add(moveForwardCommand);
+            this.Add(new MultiPinMotorCommand("MoveForward")
+            {
+                { MotorController.Current.PinCommands[Engine.Settings.GpioLeftForwardPin], p => p.Write(GpioPinValue.High) },
+                { MotorController.Current.PinCommands[Engine.Settings.GpioRightForwardPin], p => p.Write(GpioPinValue.High) },
+                { MotorController.Current.PinCommands[Engine.Settings.GpioLeftReversePin], p => p.Write(GpioPinValue.Low) },
+                { MotorController.Current.PinCommands[Engine.Settings.GpioRightReversePin], p => p.Write(GpioPinValue.Low) }
+            });
 
-            var moveBackwardCommand = new MultiPinMotorCommand("MoveBackward");
-            moveBackwardCommand.Add(MotorController.Current.PinCommands[Engine.Settings.GpioLeftReversePin], p => p.Write(GpioPinValue.High));
-            moveBackwardCommand.Add(MotorController.Current.PinCommands[Engine.Settings.GpioRightReversePin], p => p.Write(GpioPinValue.High));
-            moveForwardCommand.Add(MotorController.Current.PinCommands[Engine.Settings.GpioLeftForwardPin], p => p.Write(GpioPinValue.Low));
-            moveForwardCommand.Add(MotorController.Current.PinCommands[Engine.Settings.GpioRightForwardPin], p => p.Write(GpioPinValue.Low));
-            this.Add(moveBackwardCommand);
-
-
-            //this.Add(new MotorCommand("MoveBackward",                {
-
-            //    MotorController.Current.PinCommands[Engine.Settings.GpioLeftForwardPin].Write(Windows.Devices.Gpio.GpioPinValue.High);
-            //MotorController.Current.PinCommands[Engine.Settings.GpioRightForwardPin].Write(Windows.Devices.Gpio.GpioPinValue.High);
-            //    });
-
+            this.Add(new MultiPinMotorCommand("MoveBackward")
+            {
+                { MotorController.Current.PinCommands[Engine.Settings.GpioLeftReversePin], p => p.Write(GpioPinValue.High) },
+                { MotorController.Current.PinCommands[Engine.Settings.GpioRightReversePin], p => p.Write(GpioPinValue.High) },
+                { MotorController.Current.PinCommands[Engine.Settings.GpioLeftForwardPin], p => p.Write(GpioPinValue.Low) },
+                { MotorController.Current.PinCommands[Engine.Settings.GpioRightForwardPin], p => p.Write(GpioPinValue.Low) }
+            });
         }
 
         protected override string GetKeyForItem(IMotorCommand item)

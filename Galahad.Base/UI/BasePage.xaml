@@ -13,7 +13,7 @@
             <Button x:Name="rightForward"  Content="⇧" HorizontalAlignment="Center" Height="48" VerticalAlignment="Center" Width="48" Opacity="0.75" ToolTipService.ToolTip="Right track forward (keyboard:h)" FontSize="32" Margin="24,48,24,9" FontWeight="Bold" Padding="8,0" x:FieldModifier="protected" />
             <Button x:Name="rightBack"  Content="⇩" HorizontalAlignment="Center" Height="48" VerticalAlignment="Center" Width="48" Opacity="0.75" ToolTipService.ToolTip="Right track backward (keyboard:b)" FontSize="32" Margin="24,9,24,0" FontWeight="Bold" Padding="8,0" x:FieldModifier="protected" />
             <MediaElement x:Name="mediaElement" Height="48" Margin="0,24,0,0" RenderTransformOrigin="0.5,0.5" AutoPlay="True" Width="48" x:FieldModifier="protected" />
-            <ToggleButton x:Name="exit" Content="🚪" HorizontalAlignment="Center" Height="48" VerticalAlignment="Bottom" Width="48" Opacity="0.75" IsChecked="True" ToolTipService.ToolTip="Exit Application" FontSize="18" Margin="24" ClickMode="Press" Click="exit_Click"/>
+            <ToggleButton x:Name="exit" Content="🚪" HorizontalAlignment="Center" Height="48" VerticalAlignment="Bottom" Width="48" Opacity="0.75" IsChecked="True" ToolTipService.ToolTip="Exit Application" FontSize="18" Margin="24" ClickMode="Press" Click="Exit_Click"/>
         </StackPanel>
         <StackPanel x:Name="leftPanel" HorizontalAlignment="Left" Height="432" VerticalAlignment="Top" Width="96" Background="#FFE0E0E0" MinWidth="96" Grid.RowSpan="2">
             <ToggleButton x:Name="cameraOnOff" Content="🎥" HorizontalAlignment="Center" Height="48" VerticalAlignment="Bottom" Width="48" Opacity="0.75" IsChecked="True" ToolTipService.ToolTip="Turn camera on/off" FontSize="18" Margin="0,24,0,0" ClickMode="Press" x:FieldModifier="protected" />
@@ -27,8 +27,8 @@
         </StackPanel>
         <StackPanel x:Name="inputOutputPanel" HorizontalAlignment="Center" Height="108" VerticalAlignment="Top" Width="576" Margin="96,324,96,0" Grid.Row="2" Grid.Column="2" MinWidth="576" Grid.ColumnSpan="3">
             <TextBox x:Name="response" Height="68" Margin="0,4,0,0" TextWrapping="Wrap" Text="TextBox&#xA;TextBox&#xA;TextBox" VerticalAlignment="Top" Width="576" HorizontalAlignment="Center" ScrollViewer.VerticalScrollBarVisibility="Auto" IsReadOnly="True" MinWidth="576" FontSize="14"/>
-            <TextBox x:Name="input" Height="18" Margin="0,4,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="499" HorizontalAlignment="Left" KeyDown="input_KeyDown" x:FieldModifier="protected" />
-            <Button x:Name="sendButton" Content="Button" HorizontalAlignment="Right" VerticalAlignment="Top" Width="72" Margin="0,-33,0,0" Tapped="sendButton_Tapped"/>
+            <TextBox x:Name="input" Height="18" Margin="0,4,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="499" HorizontalAlignment="Left" KeyDown="Input_KeyDown" x:FieldModifier="protected" />
+            <Button x:Name="sendButton" Content="Button" HorizontalAlignment="Right" VerticalAlignment="Top" Width="72" Margin="0,-33,0,0" Tapped="SendButton_Tapped"/>
         </StackPanel>
 
     </Grid>

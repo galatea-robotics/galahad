@@ -58,7 +58,7 @@ namespace Galahad.Robotics
         }
 
         /// <summary>
-        /// Represents the method that handles the <see cref="CM.IComponent.Disposed"/>
+        /// Represents the method that handles the <see cref="IComponent.Disposed"/>
         /// event of a <see cref="ChatbotManager"/> component.
         /// </summary>
         public event EventHandler Disposed;
@@ -66,7 +66,11 @@ namespace Galahad.Robotics
         /// Performs application-defined tasks associated with freeing, releasing, or resetting
         /// unmanaged resources.
         /// </summary>
-        public void Dispose() { Dispose(true); }
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
 
         /// <summary>
         /// Releases the unmanaged resources used by the System.ComponentModel.Component
@@ -82,7 +86,7 @@ namespace Galahad.Robotics
             Disposed?.Invoke(this, EventArgs.Empty);
         }
         /// <summary>
-        ///  Gets or sets the <see cref="CM.ISite"/> associated with the 
+        ///  Gets or sets the <see cref="ISite"/> associated with the 
         ///  <see cref="ChatbotManager"/> component.
         /// </summary>
         protected virtual ISite Site

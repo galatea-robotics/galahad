@@ -30,6 +30,8 @@
     <UseVSHostingProcess>false</UseVSHostingProcess>
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet />
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+    <CodeAnalysisIgnoreGeneratedCode>true</CodeAnalysisIgnoreGeneratedCode>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
     <PlatformTarget>x86</PlatformTarget>
@@ -281,6 +283,7 @@
       <Link>Chatbots\Resources\alice\xfind.aiml</Link>
     </Content>
     <None Include="Galahad.pfx" />
+    <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="..\Gala.Dolly.Chatbots\Alice.cs">
@@ -369,6 +372,13 @@
       <Name>Galatea.Core</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup Condition="'$(Configuration)|$(Platform)' == 'Analysis|x86'">
+    <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers">
+      <Version>2.6.2</Version>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+  </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.0.1</Version>
@@ -405,7 +415,10 @@
     <PlatformTarget>x86</PlatformTarget>
     <UseVSHostingProcess>false</UseVSHostingProcess>
     <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+    <DocumentationFile>..\bin\Galahad\x86\Analysis\Galahad.Robotics.xml</DocumentationFile>
+    <CodeAnalysisIgnoreGeneratedCode>false</CodeAnalysisIgnoreGeneratedCode>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Analysis|ARM'">
     <DebugSymbols>true</DebugSymbols>
@@ -417,7 +430,10 @@
     <PlatformTarget>ARM</PlatformTarget>
     <UseVSHostingProcess>false</UseVSHostingProcess>
     <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+    <DocumentationFile>..\bin\Galahad\ARM\Analysis\Galahad.Robotics.xml</DocumentationFile>
+    <CodeAnalysisIgnoreGeneratedCode>false</CodeAnalysisIgnoreGeneratedCode>
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

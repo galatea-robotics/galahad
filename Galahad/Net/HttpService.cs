@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Dynamic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -32,9 +33,8 @@ namespace Galahad.Net
 
         public void Initialize(IEngine engine)
         {
-            if (engine == null) throw new Galatea.TeaArgumentNullException("engine");
+            _engine = engine ?? throw new Galatea.TeaArgumentNullException(nameof(engine));
 
-            _engine = engine;
             _engine.Add(this);
             _isInitialized = true;
         }
@@ -52,7 +52,7 @@ namespace Galahad.Net
         public async void StartListener()
         {
             _listener.ConnectionReceived += HandleRequestAsync;
-            await _listener.BindServiceNameAsync(_port.ToString());
+            await _listener.BindServiceNameAsync(_port.ToString(CultureInfo.CurrentCulture));
 
             _isListening = true;
         }
@@ -94,7 +94,7 @@ namespace Galahad.Net
                 try
                 {
                     // First read the request
-                    HttpRequest request = await HttpRequest.Parse(input);
+                    HttpRequest request = await HttpRequest.Parse(input).ConfigureAwait(false);
 
                     // Parse Request Uri
                     string[] requestUriTokens = request.RequestUri.OriginalString
@@ -107,11 +107,11 @@ namespace Galahad.Net
                         {
                             // Get the command from the URL
                             string command = requestUriTokens[1];
-                            response = await HandleGetRequestAsync(command, request);
+                            response = await HandleGetRequestAsync(command, request).ConfigureAwait(false);
                         }
                         else if (request.Method == System.Net.Http.HttpMethod.Put)
                         {
-                            response = await HandlePutRequestAsync(request);
+                            response = await HandlePutRequestAsync(request).ConfigureAwait(false);
                         }
                     }
                     else if (requestUriTokens[0] == "ResponderName")
@@ -134,11 +134,11 @@ namespace Galahad.Net
                     response = new HttpResponse(HttpStatusCode.BadRequest, "BadRequest", new StringContent(errorData));
                 }
 
-                await response.Send(args.Socket.OutputStream);
+                await response.Send(args.Socket.OutputStream).ConfigureAwait(false);
             }
         }
 
-        private HttpResponse HandleGetResponderNameRequestAsync()
+        private static HttpResponse HandleGetResponderNameRequestAsync()
         {
             HttpContent responseContent = new StringContent(App.Engine.AI.LanguageModel.ChatbotManager.Current.FriendlyName);
             return new HttpResponse(HttpStatusCode.OK, "OK", responseContent);
@@ -146,7 +146,7 @@ namespace Galahad.Net
 
         private async Task<HttpResponse> HandleGetRequestAsync(string command, HttpRequestMessage request)
         {
-            string requestContent = await request.Content.ReadAsStringAsync();
+            string requestContent = await request.Content.ReadAsStringAsync().ConfigureAwait(false);
             IDictionary<string, object> parameters = JsonConvert.DeserializeObject<ExpandoObject>(requestContent);
 
             MethodInfo mi = typeof(Galahad.API.INetCommands).GetMethod(command);
@@ -164,7 +164,7 @@ namespace Galahad.Net
         }
         private async Task<HttpResponse> HandlePutRequestAsync(HttpRequestMessage request)
         {
-            string i = await request.Content.ReadAsStringAsync();
+            string i = await request.Content.ReadAsStringAsync().ConfigureAwait(false);
             string[] contentInfo = i.Split(":".ToArray());
             string propertyName = contentInfo[0];
 

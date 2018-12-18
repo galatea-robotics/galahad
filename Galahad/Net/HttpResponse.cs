@@ -21,11 +21,12 @@ namespace Galahad.Net
             this.ReasonPhrase = reasonPhrase;
         }
 
+        /*
         public HttpResponse(HttpStatusCode status, string reasonPhrase, object content, Type type) : this(status, reasonPhrase)
         {
-            
-
         }
+         */
+
         public HttpResponse(HttpStatusCode status, string reasonPhrase, string content) : this(status, reasonPhrase)
         {
             this.Content = new StringContent(content);
@@ -65,11 +66,11 @@ namespace Galahad.Net
 
                 if (this.StatusCode != HttpStatusCode.NoContent)
                 {
-                    contentData = await this.Content.ReadAsByteArrayAsync();
+                    contentData = await Content.ReadAsByteArrayAsync().ConfigureAwait(false);
                 }
                 else
                 {
-                    contentData = new byte[0];
+                    contentData = Array.Empty<byte>();
                 }
 
                 // This is a standard HTTP header so the client browser knows the bytes returned are a valid http response
@@ -79,17 +80,17 @@ namespace Galahad.Net
 
                 // send the header with the body inclded to the client
                 byte[] headerData = Encoding.UTF8.GetBytes(header);
-                await responseStream.WriteAsync(headerData, 0, headerData.Length);
+                await responseStream.WriteAsync(headerData, 0, headerData.Length).ConfigureAwait(false);
 
                 if (contentData.Length > 0)
                 {
                     using (Stream contentStream = new MemoryStream(contentData))
                     {
-                        await contentStream.CopyToAsync(responseStream);
+                        await contentStream.CopyToAsync(responseStream).ConfigureAwait(false);
                     }
                 }
 
-                await responseStream.FlushAsync();
+                await responseStream.FlushAsync().ConfigureAwait(false);
             }
         }
     }

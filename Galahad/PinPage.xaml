@@ -8,10 +8,10 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <Button x:Name="redButton" Content="On/Off" HorizontalAlignment="Left" Margin="88,65,0,0" VerticalAlignment="Top" Height="84" Width="121" Background="#33FF0000" Click="redButton_Click"/>
-        <Button x:Name="greenButton" Content="Blink" HorizontalAlignment="Left" Margin="425,65,0,0" VerticalAlignment="Top" Height="84" Width="121" Background="#3300FF00" Click="greenButton_Click"/>
-        <Button x:Name="startButton" Content="Start" HorizontalAlignment="Left" Height="84" Margin="88,206,0,0" VerticalAlignment="Top" Width="121" Background="#33000000" Click="startButton_Click"/>
-        <Button x:Name="stopButton" Content="Stop" HorizontalAlignment="Left" Height="84" Margin="267,206,0,0" VerticalAlignment="Top" Width="121" Background="#33000000" IsEnabled="False" Click="stopButton_Click"/>
+        <Button x:Name="redButton" Content="On/Off" HorizontalAlignment="Left" Margin="88,65,0,0" VerticalAlignment="Top" Height="84" Width="121" Background="#33FF0000" Click="RedButton_Click"/>
+        <Button x:Name="greenButton" Content="Blink" HorizontalAlignment="Left" Margin="425,65,0,0" VerticalAlignment="Top" Height="84" Width="121" Background="#3300FF00" Click="GreenButton_Click"/>
+        <Button x:Name="startButton" Content="Start" HorizontalAlignment="Left" Height="84" Margin="88,206,0,0" VerticalAlignment="Top" Width="121" Background="#33000000" Click="StartButton_Click"/>
+        <Button x:Name="stopButton" Content="Stop" HorizontalAlignment="Left" Height="84" Margin="267,206,0,0" VerticalAlignment="Top" Width="121" Background="#33000000" IsEnabled="False" Click="StopButton_Click"/>
 
     </Grid>
 </Page>

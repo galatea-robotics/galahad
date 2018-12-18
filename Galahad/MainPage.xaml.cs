@@ -77,7 +77,7 @@ namespace Galahad
             {
                 try
                 {
-                    await SendResponse("Initializing camera to capture audio and video...");
+                    await SendResponse("Initializing camera to capture audio and video...").ConfigureAwait(false);
 
                     // Use default initialization
                     mediaCapture = new MediaCapture();
@@ -94,11 +94,11 @@ namespace Galahad
                     });
 
                     await mediaCapture.StartPreviewAsync();
-                    await SendResponse("Camera preview succeeded!");
+                    await SendResponse("Camera preview succeeded!").ConfigureAwait(false);
                 }
                 catch (Exception ex)
                 {
-                    await SendResponse("Unable to initialize camera for audio/video mode: " + ex.Message);
+                    await SendResponse("Unable to initialize camera for audio/video mode: " + ex.Message).ConfigureAwait(false);
                 }
             });
         }
@@ -131,12 +131,12 @@ namespace Galahad
         /// <param name="currentFailure"></param>
         private async void mediaCapture_Failed(MediaCapture currentCaptureObject, MediaCaptureFailedEventArgs currentFailure)
         {
-            await SendResponse("MediaCaptureFailed: " + currentFailure.Message);
+            await SendResponse("MediaCaptureFailed: " + currentFailure.Message).ConfigureAwait(false);
 
             if (isRecording)
             {
                 await mediaCapture.StopRecordAsync();
-                await SendResponse("Recording Stopped");
+                await SendResponse("Recording Stopped").ConfigureAwait(false);
             }
         }
         /// <summary>
@@ -147,14 +147,14 @@ namespace Galahad
         {
             try
             {
-                await SendResponse("Stopping Record on exceeding max record duration");
+                await SendResponse("Stopping Record on exceeding max record duration").ConfigureAwait(false);
                 await mediaCapture.StopRecordAsync();
 
                 isRecording = false;
             }
             catch (Exception e)
             {
-                await SendResponse("ERROR: " + e.Message);
+                await SendResponse("ERROR: " + e.Message).ConfigureAwait(false);
             }
         }
 
@@ -227,13 +227,13 @@ namespace Galahad
         }
         internal async void DisplayResponse(string responderName, string responseText)
         {
-            if (responseText.Contains("No match found"))
+            if (responseText.Contains("No match found", StringComparison.CurrentCultureIgnoreCase))
                 return;
 
-            string msg = string.Format(CultureInfo.CurrentCulture, ChatbotResources.ChatBotMessageFormat,
-                responderName.ToUpper(), responseText);
+            string msg = string.Format(CultureInfo.CurrentCulture, ChatbotResources.ChatbotMessageFormat,
+                responderName.ToUpper(CultureInfo.CurrentCulture), responseText);
 
-            await SendResponse(msg);
+            await SendResponse(msg).ConfigureAwait(false);
         }
 
         #endregion
@@ -251,10 +251,10 @@ namespace Galahad
         {
             if (string.IsNullOrEmpty(e.SpeechText)) return;
 
-            string msg = string.Format(CultureInfo.CurrentCulture, ChatbotResources.ChatBotMessageFormat,
-                App.Engine.User.Name.ToUpper(), e.SpeechText);
+            string msg = string.Format(CultureInfo.CurrentCulture, ChatbotResources.ChatbotMessageFormat,
+                App.Engine.User.Name.ToUpper(CultureInfo.CurrentCulture), e.SpeechText);
 
-            await SendResponse(msg);
+            await SendResponse(msg).ConfigureAwait(false);
         }
 
         protected override void MicrophoneOn()
@@ -273,7 +273,7 @@ namespace Galahad
 
                 if (!App.Engine.AI.LanguageModel.SpeechModule.SpeechRecognition.Inactive)
                 {
-                    await SendResponse("Speech Recognition component is listening...");
+                    await SendResponse("Speech Recognition component is listening...").ConfigureAwait(false);
                 }
             });
         }

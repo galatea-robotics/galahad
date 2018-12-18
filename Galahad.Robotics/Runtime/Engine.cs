@@ -22,9 +22,7 @@ namespace Galahad.Robotics
         }
         internal Engine(UWPSettings settings, Debugger debugger) : base()
         {
-
-            if (settings == null) throw new ArgumentNullException("settings");
-            _settings = settings;
+            _settings = settings ?? throw new ArgumentNullException(nameof(settings));
 
             // Initialize Debugger
             try
@@ -43,7 +41,7 @@ namespace Galahad.Robotics
                     {
                         try
                         {
-                            StorageFile logFile = await thisAsm.GetStorageFile(ApplicationData.Current.LocalFolder, "Galahad.log");
+                            StorageFile logFile = await thisAsm.GetStorageFile(ApplicationData.Current.LocalFolder, "Galahad.log").ConfigureAwait(false);
 
                             _debugger.FileLogger.StartLogging(logFile.Path, System.IO.FileMode.Append);
                         }
@@ -124,7 +122,7 @@ namespace Galahad.Robotics
                 InitializationStatusUpdated?.Invoke(this, new EngineInitializationEventArgs(50, EngineInitializationResources.Engine_Initializing_Language));
                 this.User = new Galatea.Runtime.Services.User(_settings.DefaultUserName);
                 chatbots = new ChatbotManager(this.User, _settings);
-                robot.LanguageModel.LoadChatBots(chatbots);
+                robot.LanguageModel.LoadChatbots(chatbots);
 
                 // Add Text to Speech (even if silent)
                 speech = new Galahad.Robotics.Speech.SpeechModule();

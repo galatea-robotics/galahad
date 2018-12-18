@@ -16,7 +16,7 @@
     <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <PackageCertificateThumbprint>3415874A1BA569406ACA2D451F1847BE3B81A22A</PackageCertificateThumbprint>
+    <PackageCertificateThumbprint>4570CBE9198AB981DD399BDAA7F3D26F3E303712</PackageCertificateThumbprint>
     <PackageCertificateKeyFile>..\Galahad.Robotics\Galahad.pfx</PackageCertificateKeyFile>
     <AppxAutoIncrementPackageRevision>False</AppxAutoIncrementPackageRevision>
     <AppxBundle>Always</AppxBundle>
@@ -51,7 +51,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
     <DebugSymbols>true</DebugSymbols>
-    <OutputPath>..\bin\Galahad\ARM\</OutputPath>
+    <OutputPath>..\bin\Galahad\ARM\Debug\</OutputPath>
     <DefineConstants>TRACE;DEBUG;NETFX_CORE;WINDOWS_UWP;CODE_ANALYSIS;DISABLE_XAML_GENERATED_BREAK_ON_UNHANDLED_EXCEPTION;CODE_ANALYSIS;ARM</DefineConstants>
     <NoWarn>;2008</NoWarn>
     <DebugType>full</DebugType>
@@ -92,6 +92,7 @@
     <None Include="..\Galahad.Robotics\Galahad.pfx">
       <Link>Galahad.pfx</Link>
     </None>
+    <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="..\Galahad.Robotics\Properties\Galahad.cs">
@@ -200,6 +201,13 @@
       <Name>Galatea.Core</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup Condition="'$(Configuration)|$(Platform)' == 'Analysis|x86'">
+    <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers">
+      <Version>2.6.2</Version>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+  </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.0.1</Version>
@@ -213,6 +221,34 @@
   </PropertyGroup>
   <PropertyGroup>
     <AssemblyOriginatorKeyFile>..\Galahad.Robotics\Galahad.pfx</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Analysis|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>..\bin\Galahad\x86\Analysis\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;NETFX_CORE;WINDOWS_UWP;DISABLE_XAML_GENERATED_BREAK_ON_UNHANDLED_EXCEPTION;CODE_ANALYSIS</DefineConstants>
+    <WarningLevel>3</WarningLevel>
+    <NoWarn>;2008</NoWarn>
+    <NoStdLib>true</NoStdLib>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+    <DocumentationFile>..\bin\Galahad\x86\Analysis\Galahad.xml</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Analysis|ARM'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\ARM\Analysis\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;NETFX_CORE;WINDOWS_UWP;CODE_ANALYSIS;DISABLE_XAML_GENERATED_BREAK_ON_UNHANDLED_EXCEPTION;CODE_ANALYSIS;ARM;CODE_ANALYSIS</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <NoStdLib>true</NoStdLib>
+    <DebugType>full</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
   <ProjectExtensions>
